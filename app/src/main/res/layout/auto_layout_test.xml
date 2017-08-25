@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:fitsSystemWindows="true"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="event"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="384px"
+            android:layout_height="640px"
+            android:onClick="@{event}"
+            android:layout_gravity="center_horizontal"
+            android:background="#ff7ecc16"
+            android:gravity="center"
+            android:text="居中一般大小"/>
+        <View
+            android:layout_width="match_parent"
+            android:background="#ffffff"
+            android:layout_height="1px"/>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:padding="20px"
+        android:layout_weight="1"
+        android:text="@string/action_settings"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:padding="20px"
+        android:text="@string/action_settings"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="20px"
+        android:onClick="@{event}"
+        android:id="@+id/set11111"
+        android:text="@string/action_settings"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="20px"
+        android:text="@string/action_settings"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:padding="20px"
+        android:text="@string/action_settings"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+    </RelativeLayout>
+</layout>

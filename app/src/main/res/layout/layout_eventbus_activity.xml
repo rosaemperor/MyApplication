@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="event"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:id="@+id/get_event"
+        android:text="显示message"
+        android:gravity="center"
+        android:background="@drawable/shape_round_conner"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:id="@+id/event_test"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_round_conner"
+        android:text="点击发送一个event"
+        android:onClick="@{event}"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:id="@+id/retrofit_test"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_round_conner"
+        android:text="从网络端获取数据"
+        android:onClick="@{event}"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout></layout>
