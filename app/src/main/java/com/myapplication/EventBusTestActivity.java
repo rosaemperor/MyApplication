@@ -70,7 +70,7 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
                 break;
             case R.id.retrofit_test:
-                Call<LoginBean> string=apiHelp.getLoginString("15936562980","222222","ANDROID");
+                Call<LoginBean> string=apiHelp.getLoginString("15936562980","222222");
                 string.enqueue(new Callback<LoginBean>() {
                     @Override
                     public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {

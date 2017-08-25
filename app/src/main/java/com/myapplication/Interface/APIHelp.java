@@ -13,10 +13,10 @@ import retrofit2.http.POST;
  */
 
 public interface APIHelp {
+     String terminal="ANDROID";
     @FormUrlEncoded
-    @POST("api/v1/auth")
-    Call<LoginBean> getLoginString(@Field("username") String username, @Field("password") String s1, @Field("terminal")
-            String android);
+    @POST("api/v1/auth?terminal="+terminal)
+    Call<LoginBean> getLoginString(@Field("username") String username, @Field("password") String s1);
     @POST("api/v1/users")
     Call<LoginBean> reginst(@Body String username,@Body String password,
                             @Body String referral,@Body String terminal,
