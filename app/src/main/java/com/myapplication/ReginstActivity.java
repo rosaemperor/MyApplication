@@ -11,6 +11,7 @@ import com.myapplication.bean.LoginBean;
 import com.myapplication.bean.ReginstMessageBean;
 import com.myapplication.databinding.LayoutReginstActivityBinding;
 import com.myapplication.http.RetrofitUtils;
+import com.myapplication.viewModel.ReginstViewModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +28,7 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ReginstActivity.this,R.layout.layout_reginst_activity);
-        binding.setEvent(this);
+        binding.setEvent(new ReginstViewModel(ReginstActivity.this));
         message=new ReginstMessageBean();
         binding.setMessage(message);
     }

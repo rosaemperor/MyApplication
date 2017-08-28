@@ -3,7 +3,7 @@
     <data>
         <variable
             name="event"
-            type="android.view.View.OnClickListener"/>
+            type="com.myapplication.viewModel.ReginstViewModel"/>
         <variable
             name="message"
             type="com.myapplication.bean.ReginstMessageBean"/>
