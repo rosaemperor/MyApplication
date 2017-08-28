@@ -12,7 +12,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
- * Created by Administrator on 2017/8/24.
+ * Created by alan on 2017/8/24.
  */
 
 public interface APIHelp {
@@ -24,10 +24,7 @@ public interface APIHelp {
     @POST("api/v1/auth?terminal="+terminal)
     Call<LoginBean> getLoginString(@FieldMap HashMap<String,String> Map);
     @POST("api/v1/users")
-    Call<LoginBean> reginst(@Body String username,@Body String password,
-                            @Body String referral,@Body String terminal,
-                            @Body String url_from,
-                            @Body String phone,@Body String code);
+    Call<LoginBean> reginst(@Body String user);
 
 
 }
