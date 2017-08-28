@@ -44,8 +44,7 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void reginst() {
-        RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333").enqueue(new
-                                                                                                       Callback<LoginBean>(){
+        RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333").enqueue(new Callback<LoginBean>(){
             @Override
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
                      if(response.code()==200){

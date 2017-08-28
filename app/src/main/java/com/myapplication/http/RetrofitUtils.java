@@ -3,6 +3,7 @@ package com.myapplication.http;
 import com.myapplication.Interface.APIHelp;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,16 +14,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
     private Retrofit retrofit;
     private APIHelp OkHelp;
+    private OkHttpClient client;
+    private HttpLoggingInterceptor loggingInterceptor;
     private static final RetrofitUtils utils = new RetrofitUtils();
     private RetrofitUtils(){
         init();
     }
 
     private void init() {
+        loggingInterceptor=new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        client=new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+//        client.interceptors().add(loggingInterceptor);
         retrofit=new Retrofit.Builder()
                 .baseUrl( "http://api.ih2ome.cn/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(new OkHttpClient())
+                .client(client)
                 .build();
         OkHelp=retrofit.create(APIHelp.class);
 
