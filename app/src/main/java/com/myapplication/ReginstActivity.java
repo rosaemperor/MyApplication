@@ -29,8 +29,8 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ReginstActivity.this,R.layout.layout_reginst_activity);
         binding.setEvent(new ReginstViewModel(ReginstActivity.this));
-        message=new ReginstMessageBean();
-        binding.setMessage(message);
+//        message=new ReginstMessageBean();
+//        binding.setMessage(message);
     }
 
     @Override

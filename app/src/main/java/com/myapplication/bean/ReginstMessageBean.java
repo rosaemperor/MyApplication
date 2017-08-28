@@ -4,6 +4,7 @@ import android.databinding.BaseObservable;
 
 import com.android.databinding.library.baseAdapters.BR;
 
+
 /**
  * Created by Administrator on 2017/8/25.
  */

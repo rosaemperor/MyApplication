@@ -3,10 +3,8 @@
     <data>
         <variable
             name="event"
-            type="com.myapplication.viewModel.ReginstViewModel"/>
-        <variable
-            name="message"
-            type="com.myapplication.bean.ReginstMessageBean"/>
+            type="com.myapplication.viewModel.ReginstViewModel"
+            />
     </data>
 
     <LinearLayout
@@ -18,27 +16,27 @@
             android:layout_width="match_parent"
             android:padding="15dp"
             android:hint="请填入手机号"
-            android:text="@={message.phone}"
+            android:text="@={event.message.phone}"
             android:layout_height="wrap_content"/>
         <EditText
             android:layout_width="match_parent"
             android:padding="15dp"
             android:hint="请输入验证码"
-            android:text="@={message.code}"
+            android:text="@={event.message.code}"
             android:layout_height="wrap_content"/>
         <EditText
 
             android:layout_width="match_parent"
             android:padding="15dp"
             android:hint="设置密码"
-            android:text="@={message.password}"
+            android:text="@={event.message.password}"
             android:layout_height="wrap_content"/>
         <EditText
 
             android:layout_width="match_parent"
             android:padding="15dp"
             android:hint="请输入验证码"
-            android:text="@={message.code}"
+            android:text="@={event.message.code}"
             android:layout_height="wrap_content"/>
         <TextView
             android:layout_width="match_parent"
