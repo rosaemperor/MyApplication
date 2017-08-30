@@ -28,6 +28,7 @@
         <activity android:name=".TouchTestActivity"/>
         <activity android:name=".EventBusTestActivity"/>
         <activity android:name=".EventBusSendActivity"/>
+        <activity android:name=".DoubleRecycleViewActivity"/>
         <activity android:name=".ReginstActivity"/>
     </application>
 

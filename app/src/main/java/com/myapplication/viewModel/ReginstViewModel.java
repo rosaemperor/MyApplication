@@ -62,7 +62,9 @@ public class ReginstViewModel implements View.OnClickListener{
             @Override
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
                 if(response.code()==200){
-                    Toast.makeText(context,"200"+""+response.body().getOperate_mode(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,response.body().getTp_user()+"200"+""+response.body().getAb_user(),Toast
+                            .LENGTH_LONG)
+                            .show();
                 }
             }
 

@@ -7,6 +7,25 @@ package com.myapplication.bean;
 public class LoginBean {
     private String operate_mode;
     private String token;
+    private String ab_user;
+
+    public String getTp_user() {
+        return tp_user;
+    }
+
+    public void setTp_user(String tp_user) {
+        this.tp_user = tp_user;
+    }
+
+    private String tp_user;
+
+    public String getAb_user() {
+        return ab_user;
+    }
+
+    public void setAb_user(String ab_user) {
+        this.ab_user = ab_user;
+    }
 
     public String getOperate_mode() {
         return operate_mode;
