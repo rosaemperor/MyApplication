@@ -100,7 +100,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
-
+            Intent intent=new Intent();
+            intent.setClass(MainActivity.this,DoubleRecycleViewActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
 
         }
