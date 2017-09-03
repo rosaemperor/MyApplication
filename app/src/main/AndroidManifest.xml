@@ -30,6 +30,8 @@
         <activity android:name=".EventBusSendActivity"/>
         <activity android:name=".DoubleRecycleViewActivity"/>
         <activity android:name=".ReginstActivity"/>
+        <activity android:name=".RXAndroidTestActivity"/>
+        <activity android:name=".SimpleRxAndroidActivity"/>
     </application>
 
 
