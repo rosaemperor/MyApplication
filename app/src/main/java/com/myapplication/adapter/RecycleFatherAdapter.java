@@ -1,6 +1,7 @@
 package com.myapplication.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.myapplication.R;
+import com.myapplication.databinding.DoubleChildRecycleBinding;
 
 import java.util.List;
 
@@ -35,14 +37,15 @@ public class RecycleFatherAdapter extends RecyclerView.Adapter<RecycleFatherAdap
 
     @Override
     public void onBindViewHolder(final RecycleFatherAdapter.MyViewHolder holder, int position) {
-               holder.textView.setText(data.get(position));
-               holder.textView.setOnClickListener(new View.OnClickListener() {
+        final DoubleChildRecycleBinding binding= DataBindingUtil.bind(holder.itemView.getRootView());
+        binding.text.setText(data.get(position));
+        binding.text.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View v) {
-                       if(holder.recyclerView.getVisibility()== View.VISIBLE){
-                           holder.recyclerView.setVisibility(View.GONE);
+                       if(binding.child.getVisibility()== View.VISIBLE){
+                           binding.child.setVisibility(View.GONE);
                        }else {
-                           holder.recyclerView.setVisibility(View.VISIBLE);
+                           binding.child.setVisibility(View.VISIBLE);
                        }
                    }
                });

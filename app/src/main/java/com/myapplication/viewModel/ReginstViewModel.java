@@ -76,8 +76,6 @@ public class ReginstViewModel implements View.OnClickListener{
     }
 
     private void reginst() {
-//        Log.d("AA","reginst"+message.getPhone());
-//        Toast.makeText(context,"reginst"+message.getPhone(),Toast.LENGTH_LONG).show();
         RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333").enqueue(new Callback<LoginBean>(){
             @Override
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
