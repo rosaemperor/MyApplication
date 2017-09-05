@@ -25,7 +25,7 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
         binding= DataBindingUtil.setContentView(TouchTestActivity.this,R.layout.activity_ontouch_layout);
         binding.setEvent(this);
         LoadingDialog dialog= new LoadingDialog(TouchTestActivity.this);
-        dialog.show();
+
     }
     @Override
     public void onClick(View v) {

@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity
             intent.setClass(MainActivity.this,DoubleRecycleViewActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_send) {
-
+            Intent intent=new Intent();
+            intent.setClass(MainActivity.this,RXAndroidTestActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
