@@ -10,14 +10,12 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.xiaosu.pulllayout.SimplePullLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recycle_farther"
         android:layout_height="match_parent"/>
-    </com.xiaosu.pulllayout.SimplePullLayout>
+
 
 
 </LinearLayout></layout>
