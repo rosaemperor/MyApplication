@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="event"
@@ -16,5 +17,16 @@
         android:id="@+id/simple_text"
         android:onClick="@{event}"
         android:padding="15dp"/>
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        app:tabIndicatorColor="#000000"
+        app:tabIndicatorHeight="5dp"
+        style="@style/tab_indicator"
+        android:id="@+id/tablayout"
+        android:layout_height="wrap_content"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout></layout>

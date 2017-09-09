@@ -31,4 +31,9 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.1</item>
     </style>
+    <style name="tab_indicator" parent="Widget.Design.TabLayout">
+        <item name="android:indicatorLeft">15dp</item>
+
+
+    </style>
 </resources>
