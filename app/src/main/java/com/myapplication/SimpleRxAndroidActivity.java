@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.myapplication.adapter.TabLayoutPagerAdapter;
 import com.myapplication.databinding.RxSimpleTestBinding;
@@ -40,10 +41,10 @@ public class SimpleRxAndroidActivity extends AppCompatActivity{
         binding.viewpager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(),SimpleRxAndroidActivity.this,list));
         binding.tablayout.setupWithViewPager(binding.viewpager);
         binding.tablayout.setTabMode(TabLayout.MODE_FIXED);
-        LinearLayout layout= (LinearLayout) ((ViewGroup)binding.tablayout.getRootView()).getChildAt(0);
-        FrameLayout frameLayout= (FrameLayout) layout.getChildAt(1);
-        FitWindowsLinearLayout layout1= (FitWindowsLinearLayout) frameLayout.getChildAt(0);
-        Log.d("AA",""+layout1.getChildAt(1)+layout1.getChildAt(0));
+        TabLayout.Tab tab= binding.tablayout.getTabAt(0);
+        TextView textView=new TextView(SimpleRxAndroidActivity.this);
+        textView.setText("测试");
+        tab.setCustomView(textView);
     }
 
 }
