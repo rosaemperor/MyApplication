@@ -4,6 +4,9 @@
         <variable
             name="event"
             type="android.view.View.OnClickListener"/>
+        <variable
+            name="test"
+            type="com.myapplication.bean.TestBean"/>
     </data>
 <LinearLayout
               android:orientation="vertical"
@@ -11,10 +14,18 @@
               android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="30dp"
         android:background="@color/colorAccent"
         android:text="测试来的"
         android:onClick="@{event}"
         android:id="@+id/onTouchTest"/>
+
+    <TextView
+        android:id="@+id/text_test"
+        android:text='@{"我是"+test.text}'
+        android:layout_width="match_parent"
+        android:onClick="@{event}"
+        android:background="@color/colorAccent"
+        android:layout_height="30dp" />
 
 </LinearLayout></layout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.myapplication.bean.TestBean;
 import com.myapplication.databinding.ActivityOntouchLayoutBinding;
 import com.myapplication.view.LoadingDialog;
 import com.zhy.autolayout.AutoLayoutActivity;
@@ -32,6 +33,11 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
         switch (v.getId()){
             case R.id.onTouchTest:
                 Log.d("AAA","测试");
+                break;
+            case R.id.text_test:
+                TestBean bean= new TestBean();
+                bean.setText("来自点击事件的文字");
+                binding.setTest(bean);
                 break;
             default:
                 break;
