@@ -1,10 +1,13 @@
 package com.myapplication;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableField;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,6 +33,27 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(TouchTestActivity.this,R.layout.activity_ontouch_layout);
         binding.setEvent(this);
+        TestBean bean= new TestBean();
+        bean.setText("来自点击事件的文字");
+        ObservableField<String> stringObservableField=new ObservableField<>("222222");
+        bean.setObString(stringObservableField);
+        binding.setTest(bean);
+        binding.obTest.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                      binding.getTest().setText(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 //        LoadingDialog dialog= new LoadingDialog(TouchTestActivity.this);
 
     }
@@ -37,12 +61,17 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.onTouchTest:
-                Log.d("AAA","测试");
+                binding.getTest().setText("AAAAAAAAAA");
                 break;
+            case R.id.test3333:
+                binding.getTest().setText("AAAA");
+                Log.d("AA",binding.getTest().getText());
+                break;
+//            case :
+//                binding.text2.setTest("33333");
+//                break;
             case R.id.text_test:
-                TestBean bean= new TestBean();
-                bean.setText("来自点击事件的文字");
-                binding.setTest(bean);
+
                 Calendar selectedDate = Calendar.getInstance();
                 Calendar startDate = Calendar.getInstance();
                 startDate.set(2013,1,1);

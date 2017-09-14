@@ -16,16 +16,31 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@color/colorAccent"
-        android:text="测试来的"
+        android:text='@{"我是"+test.text}'
         android:onClick="@{event}"
         android:id="@+id/onTouchTest"/>
 
-    <TextView
+    <EditText
         android:id="@+id/text_test"
-        android:text='@{"我是"+test.text}'
+        android:text='@{"我是"+test.obString}'
         android:layout_width="match_parent"
-        android:onClick="@{event}"
         android:background="@color/colorAccent"
         android:layout_height="30dp" />
-
+    <EditText
+        android:id="@+id/ob_test"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/test3333"
+        android:onClick="@{event}"
+        android:background="@color/colorAccent"
+        android:text='@{"我是"+test.text}'
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:text='@{test.text+"上面的是密码。下面的是后几号"}'
+        android:layout_height="wrap_content"/>
 </LinearLayout></layout>
