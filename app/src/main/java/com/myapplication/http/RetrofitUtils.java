@@ -1,8 +1,16 @@
 package com.myapplication.http;
 
+import android.util.Log;
+
 import com.myapplication.Interface.APIHelp;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,7 +32,21 @@ public class RetrofitUtils {
     private void init() {
         loggingInterceptor=new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        client=new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+        client=new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Response response = chain.proceed(chain.request());
+                Log.d("AAA",""+response.body().string());
+                Request request = chain.request().newBuilder()
+                        .addHeader("Content-Type", "text/html; charset=UTF-8")
+                        .build();
+                return chain.proceed(request);
+            }
+        })
+                .retryOnConnectionFailure(true)
+                .connectTimeout(3, TimeUnit.SECONDS)
+                .build();
+
 //        client.interceptors().add(loggingInterceptor);
         retrofit=new Retrofit.Builder()
                 .baseUrl( "http://api.ih2ome.cn/")
