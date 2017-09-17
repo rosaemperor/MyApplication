@@ -2,6 +2,7 @@ package com.myapplication.viewModel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -32,6 +33,11 @@ public class RxAndroidTestViewModel implements OnClickListener{
         switch (v.getId()){
             case R.id.simple:
                 context.startActivity(new Intent(context, SimpleRxAndroidActivity.class));
+                break;
+            case R.id.call:
+                Intent intent = new Intent(); intent.setAction(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:15936562980"));
+                context.startActivity(intent);
                 break;
             default:
                 break;
