@@ -18,7 +18,7 @@
         android:background="@drawable/shape_round_conner"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/child"
-        android:visibility="gone"
+        android:nestedScrollingEnabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
