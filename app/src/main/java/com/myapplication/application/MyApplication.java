@@ -1,33 +1,34 @@
-package com.myapplication;
+package com.myapplication.application;
 
 import android.Manifest;
 import android.app.Application;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 
-import com.zhy.autolayout.config.AutoLayoutConifg;
+import com.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
 
 /**
- * Created by Administrator on 2017/8/1.
+ * Created by Administrator on 2017/9/17.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends Application{
     List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
     @Override
     public void onCreate() {
-        super.onCreate();
-        AutoLayoutConifg.getInstance().useDeviceSize();
+
         checkPermissionApplication();
+        super.onCreate();
     }
+
     private void checkPermissionApplication() {
-        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA,"相机",R.mipmap.ic_launcher));
         permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE,"打电话",R.mipmap.ic_launcher));
         HiPermission.create(this).title("权限")
                 .permissions(permissionItems)
@@ -37,16 +38,11 @@ public class MyApplication extends Application {
                     @Override
                     public void onClose() {
                         Log.d("AAA","onClose");
-                        System.exit(0);
                     }
 
-                    /**
-                     * 所有权限申请完成后调用onFinish
-                     */
                     @Override
                     public void onFinish() {
                         Log.d("AAA","onFinish");
-
                     }
 
                     @Override
