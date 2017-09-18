@@ -50,4 +50,7 @@
        <!--android:id="@+id/swicth"-->
            <!--app:checked="true"-->
         <!--android:layout_height="50dp"/>-->
+    <com.myapplication.view.RemoteControlView
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
 </LinearLayout></layout>

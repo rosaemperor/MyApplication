@@ -51,4 +51,5 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:3.2.6'
 
     compile 'com.xiaosu:pullLayout:3.0.4'
+    compile 'me.weyye.hipermission:library:1.0.7'
 }
