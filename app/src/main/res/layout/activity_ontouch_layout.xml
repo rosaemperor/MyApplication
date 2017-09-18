@@ -45,9 +45,9 @@
         android:layout_width="match_parent"
         android:text='@{test.text+"上面的是密码。下面的是后几号"}'
         android:layout_height="wrap_content"/>
-    <vn.luongvo.widget.iosswitchview.SwitchView
-        android:layout_width="50dp"
-       android:id="@+id/swicth"
-           app:checked="true"
-        android:layout_height="50dp"/>
+    <!--<vn.luongvo.widget.iosswitchview.SwitchView-->
+        <!--android:layout_width="50dp"-->
+       <!--android:id="@+id/swicth"-->
+           <!--app:checked="true"-->
+        <!--android:layout_height="50dp"/>-->
 </LinearLayout></layout>
