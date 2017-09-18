@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -24,9 +25,9 @@ public class RemoteControlView extends View{
     private int leftColor;
     private int rightColor;
     private int centerColor;
-    private int backgroundColor;
+    private int backgroundColor=0xFFFF0000;
     private boolean visiableCenter;
-    private String centerText;
+    private String centerText="OK";
     private int  centerTextSize;
     private int attr;
     private int widthMesureMode;
@@ -35,11 +36,11 @@ public class RemoteControlView extends View{
     private Rect mBound;
     private RectF backgoundRectF;
     public RemoteControlView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public RemoteControlView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public RemoteControlView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -47,6 +48,7 @@ public class RemoteControlView extends View{
         /**
          * 获取自定义的样式属性
          */
+        this.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.RemoteControlViewStyle,defStyleAttr,0);
         int count= array.getIndexCount();
@@ -69,7 +71,7 @@ public class RemoteControlView extends View{
                     centerColor = array.getColor(attr,Color.RED);
                     break;
                 case R.styleable.RemoteControlViewStyle_backgroundColor:
-                    backgroundColor = array.getColor(attr,Color.GRAY);
+                    backgroundColor = array.getColor(attr,Color.BLACK);
                     break;
                 case R.styleable.RemoteControlViewStyle_visiCenter:
                     visiableCenter =array.getBoolean(attr,true);
@@ -81,11 +83,14 @@ public class RemoteControlView extends View{
                     centerTextSize = array.getDimensionPixelSize(attr, (int)TypedValue.applyDimension(TypedValue
                             .COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics()));
                     break;
+                default:
+                    break;
             }
 
         }
         array.recycle();
         mPaint = new Paint();
+        Log.d("AA","jinlaile");
         mPaint.setTextSize(centerTextSize);
         mBound =new Rect();
         mPaint.getTextBounds(centerText,0,centerText.length(),mBound);
@@ -96,16 +101,16 @@ public class RemoteControlView extends View{
         widthMesureMode = MeasureSpec.getMode(widthMeasureSpec);
         heightMesureMode = MeasureSpec.getMode(heightMeasureSpec);
         if(widthMesureMode == MeasureSpec.EXACTLY){
-
+            widthMeasureSpec = MeasureSpec.getSize(widthMeasureSpec);
         }else {
             widthMeasureSpec = mBound.width()*3;
         }
         if(heightMesureMode == MeasureSpec.EXACTLY){
-
+            heightMeasureSpec = MeasureSpec.getSize(heightMeasureSpec);
         }else {
             heightMeasureSpec = mBound.height()*3;
         }
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(widthMeasureSpec,heightMeasureSpec);
     }
 
     @Override

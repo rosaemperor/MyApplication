@@ -11,7 +11,7 @@
     </data>
 <LinearLayout
               android:orientation="vertical"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:remoteView="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <TextView
@@ -52,5 +52,6 @@
         <!--android:layout_height="50dp"/>-->
     <com.myapplication.view.RemoteControlView
         android:layout_width="300dp"
+        remoteView:backgroundColor="#454545"
         android:layout_height="300dp"/>
 </LinearLayout></layout>
