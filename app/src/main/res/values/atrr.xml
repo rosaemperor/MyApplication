@@ -12,4 +12,17 @@
         <attr name="matProg_barWidth" format="dimension" />
         <attr name="matProg_linearProgress" format="boolean" />
     </declare-styleable>
+    <attr name="topColor" format="color"/>
+    <attr name="bottomColor" format="color"/>
+    <attr name="leftColor" format="color"/>
+    <attr name="rightColor" format="color"/>
+    <attr name="centerColor" format="color"/>
+    <declare-styleable name="RemoteControlViewStyle">
+       <attr name="topColor"/>
+        <attr name="bottomColor"/>
+        <attr name="leftColor"/>
+        <attr name="rightColor"/>
+        <attr name="centerColor"/>
+        <attr name="visiCenter" format="boolean"/>
+    </declare-styleable>
 </resources>
