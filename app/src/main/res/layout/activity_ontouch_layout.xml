@@ -24,12 +24,14 @@
 
     <EditText
         android:id="@+id/text_test"
+        android:visibility="gone"
         android:text='@{"我是"+test.obString}'
         android:layout_width="match_parent"
         android:background="@color/colorAccent"
         android:layout_height="30dp" />
     <EditText
         android:id="@+id/ob_test"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:background="@color/colorAccent"
         android:layout_height="40dp"/>
@@ -52,5 +54,8 @@
         <!--android:layout_height="50dp"/>-->
     <com.myapplication.view.RemoteControlView
         android:layout_width="300dp"
+        android:id="@+id/remote"
+        android:layout_gravity="center_horizontal"
+        app:backgroundColor="#ffffff"
         android:layout_height="300dp"/>
 </LinearLayout></layout>

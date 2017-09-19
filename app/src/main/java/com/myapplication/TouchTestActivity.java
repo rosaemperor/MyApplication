@@ -2,22 +2,19 @@ package com.myapplication;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
+import com.myapplication.Interface.OnClickRemoteConterView;
 import com.myapplication.bean.TestBean;
 import com.myapplication.databinding.ActivityOntouchLayoutBinding;
 import com.zhy.autolayout.AutoLayoutActivity;
-
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Administrator on 2017/8/21.
@@ -37,6 +34,33 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
         ObservableField<String> stringObservableField=new ObservableField<>("222222");
         bean.setObString(stringObservableField);
         binding.setTest(bean);
+        binding.remote.setmListener(new OnClickRemoteConterView() {
+            @Override
+            public void onTopClickListener() {
+                Toast.makeText(TouchTestActivity.this,"Top",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onBottomClickListener() {
+                Toast.makeText(TouchTestActivity.this,"Bottom",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onLeftClickListener() {
+                Toast.makeText(TouchTestActivity.this,"Left",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onRightClickListener() {
+                Toast.makeText(TouchTestActivity.this,"Right",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCenterClickListener() {
+                Toast.makeText(TouchTestActivity.this,"OK",Toast.LENGTH_LONG).show();
+
+            }
+        });
         binding.obTest.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -120,7 +144,7 @@ public class TouchTestActivity extends AutoLayoutActivity implements View.OnClic
                     firstTime=System.currentTimeMillis();
                     return super.dispatchTouchEvent(ev);
                 }else{
-                    Log.d("AAA","太快了"+ev.getAction());
+//                    Log.d("AAA","太快了"+ev.getAction());
                     return true;
                 }
 
