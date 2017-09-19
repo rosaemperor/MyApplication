@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.myapplication.Interface.APIHelp;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.bean.MessageEvent;
@@ -40,6 +41,8 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
         binding= DataBindingUtil.setContentView(EventBusTestActivity.this,R.layout.layout_eventbus_activity);
         binding.setEvent(this);
         EventBus.getDefault().register(this);
+        Glide.with(this).load("http://img.blog.csdn.net/20151014174714655").into(binding.imageView);
+        binding.simpDraweeView .setImageURI("http://img.blog.csdn.net/20151014174714655");
         client=new OkHttpClient.Builder().
 //                addInterceptor(new Interceptor() {
 //            @Override

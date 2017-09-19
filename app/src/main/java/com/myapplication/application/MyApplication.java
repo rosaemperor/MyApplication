@@ -30,6 +30,8 @@ public class MyApplication extends Application{
 
     private void checkPermissionApplication() {
         permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE,"打电话",R.mipmap.ic_launcher));
+        permissionItems.add(new PermissionItem(Manifest.permission.WRITE_EXTERNAL_STORAGE,"内存读取",R.mipmap
+                .ic_launcher));
         HiPermission.create(this).title("权限")
                 .permissions(permissionItems)
                 .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//permission icon color

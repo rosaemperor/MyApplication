@@ -5,6 +5,7 @@ import android.app.Application;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AutoLayoutConifg.getInstance().useDeviceSize();
+        Fresco.initialize(this);
         checkPermissionApplication();
     }
     private void checkPermissionApplication() {

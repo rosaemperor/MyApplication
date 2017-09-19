@@ -39,7 +39,7 @@ public class RemoteControlView extends View{
     private Paint mPaint;
     private Rect mBound;
     private RectF backgoundRectF;
-
+    private Paint centerPaint;
     public OnClickRemoteConterView getmListener() {
         return mListener;
     }
@@ -108,6 +108,9 @@ public class RemoteControlView extends View{
         array.recycle();
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
+        mPaint.setStyle(Paint.Style.STROKE);
+        centerPaint = new Paint();
+        centerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 //        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mPaint.setTextSize(centerTextSize);
         mBound =new Rect();
@@ -154,8 +157,8 @@ public class RemoteControlView extends View{
         canvas.drawArc(backgoundRectF,225,90,true,mPaint);
         mPaint.setColor(rightColor);
         canvas.drawArc(backgoundRectF,315,90,true,mPaint);
-        mPaint.setColor(centerColor);
-        canvas.drawCircle(backgoundRectF.centerX(),backgoundRectF.centerY(),backgoundRectF.height()/4,mPaint);
+        centerPaint.setColor(centerColor);
+        canvas.drawCircle(backgoundRectF.centerX(),backgoundRectF.centerY(),backgoundRectF.height()/4,centerPaint);
         mPaint.setColor(leftColor);
         mPaint.setTextSize(centerTextSize);
         canvas.drawText(centerText,backgoundRectF.centerX()-mBound.width()/2,backgoundRectF.centerY()+mBound.height()

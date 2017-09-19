@@ -52,6 +52,7 @@
         <!--android:layout_height="50dp"/>-->
     <com.myapplication.view.RemoteControlView
         android:layout_width="300dp"
+        android:id="@+id/remote"
         remoteView:backgroundColor="#454545"
         android:layout_height="300dp"/>
 </LinearLayout></layout>
