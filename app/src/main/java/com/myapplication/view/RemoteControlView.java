@@ -1,13 +1,16 @@
 package com.myapplication.view;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -22,11 +25,13 @@ import com.myapplication.R;
  */
 
 public class RemoteControlView extends View{
-    private int bottomColor=Color.BLACK;
-    private int topColor=Color.BLUE;
-    private int leftColor=Color.RED;
-    private int rightColor = Color.CYAN;
+    private int bottomColor;
+    private ColorStateList bottomColorList=ColorStateList.valueOf(Color.GRAY);
+    private int topColor;
+    private int leftColor;
+    private int rightColor ;
     private int centerColor=Color.GREEN;
+    private int centerCurrentClolr=centerColor;
     private int backgroundColor=Color.BLACK;
     private boolean visiableCenter;
     private String centerText="ok";
@@ -34,9 +39,10 @@ public class RemoteControlView extends View{
     private int attr;
     private int widthMesureMode;
     private int heightMesureMode;
-    private String bottomText="彭清";
+    private Drawable centerBackGround;
+    private String bottomText="alan";
     private Rect bottomTextBounds;
-    private Paint mPaint;
+    private Paint mPaint,topPaint,rightPaint,bottomPaint;
     private Rect mBound;
     private RectF backgoundRectF;
     private Paint centerPaint;
@@ -51,7 +57,7 @@ public class RemoteControlView extends View{
     private RectF bottomRectF;
     private float x;
     private float y;
-    private String downEventName,upEventName;
+    private String downEventName,upEventName,moveName;
     private OnClickRemoteConterView mListener;
     public RemoteControlView(Context context) {
         this(context,null);
@@ -66,6 +72,12 @@ public class RemoteControlView extends View{
         /**
          * 获取自定义的样式属性
          */
+        this.setClickable(true);
+        rightColor = ContextCompat.getColor(context,R.color.c_AFAFAF);
+        leftColor = ContextCompat.getColor(context,R.color.c_AFAFAF);
+        topColor =  ContextCompat.getColor(context,R.color.c_AFAFAF);
+        bottomColor =  ContextCompat.getColor(context,R.color.c_AFAFAF);
+        backgroundColor = ContextCompat.getColor(context,R.color.c_ffffff);
         centerTextSize=(int)TypedValue.applyDimension(TypedValue
                         .COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics());
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs,
@@ -75,7 +87,7 @@ public class RemoteControlView extends View{
             attr = array.getIndex(i);
             switch (attr){
                 case R.styleable.RemoteControlViewStyle_bottomColor:
-                    bottomColor=array.getColor(attr,Color.GRAY);
+                    bottomColorList=array.getColorStateList(attr);
                     break;
                 case R.styleable.RemoteControlViewStyle_topColor:
                     topColor = array.getColor(attr,Color.GRAY);
@@ -102,6 +114,10 @@ public class RemoteControlView extends View{
                     centerTextSize = array.getDimensionPixelSize(attr, (int)TypedValue.applyDimension(TypedValue
                             .COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics()));
                     break;
+                case R.styleable.RemoteControlViewStyle_centerBackGround:
+                    centerBackGround = array.getDrawable(attr);
+                    break;
+
             }
 
         }
@@ -117,6 +133,15 @@ public class RemoteControlView extends View{
         mPaint.getTextBounds(centerText,0,centerText.length(),mBound);
         bottomTextBounds = new Rect();
         mPaint.getTextBounds(bottomText,0,bottomText.length(),bottomTextBounds);
+        topPaint= new Paint();
+        topPaint.setStyle(Paint.Style.STROKE);
+        topPaint.setColor(topColor);
+        rightPaint= new Paint();
+        rightPaint.setStyle(Paint.Style.STROKE);
+        rightPaint.setColor(topColor);
+        bottomPaint= new Paint();
+        bottomPaint.setStyle(Paint.Style.STROKE);
+        bottomPaint.setColor(topColor);
     }
 
     @Override
@@ -145,18 +170,17 @@ public class RemoteControlView extends View{
         backgoundRectF.right=getMeasuredWidth();
         backgoundRectF.bottom =getMeasuredWidth();
         canvas.drawRect(backgoundRectF,mPaint);
-        mPaint.setColor(bottomColor);
-        canvas.drawArc(backgoundRectF,45,90,true,mPaint);
+        canvas.drawArc(backgoundRectF,45,90,true,bottomPaint);
         mPaint.setColor(Color.WHITE);
         canvas.drawText(bottomText,backgoundRectF.centerX()-bottomTextBounds.width()/2, (float) (backgoundRectF.height()
                 /2+backgoundRectF.height()
                 /2*0.75)+bottomTextBounds.height()/2,mPaint);
         mPaint.setColor(leftColor);
         canvas.drawArc(backgoundRectF,135,90,true,mPaint);
-       mPaint.setColor(topColor);
-        canvas.drawArc(backgoundRectF,225,90,true,mPaint);
-        mPaint.setColor(rightColor);
-        canvas.drawArc(backgoundRectF,315,90,true,mPaint);
+
+        canvas.drawArc(backgoundRectF,225,90,true,topPaint);
+
+        canvas.drawArc(backgoundRectF,315,90,true,rightPaint);
         centerPaint.setColor(centerColor);
         canvas.drawCircle(backgoundRectF.centerX(),backgoundRectF.centerY(),backgoundRectF.height()/4,centerPaint);
         mPaint.setColor(leftColor);
@@ -170,26 +194,46 @@ public class RemoteControlView extends View{
     public boolean onTouchEvent(MotionEvent event) {
         x=event.getX();
         y=event.getY();
+        Log.d("AAA","x值："+x+"Y值："+y+"/"+event.getAction());
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                downEventName= inCircleLocation(x,y);
+                switch (inCircleLocation(x,y)){
+                    case "inCenter":
+                        centerColor =ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        invalidate();
+                        break;
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 break;
             case MotionEvent.ACTION_BUTTON_PRESS:
                 Log.d("AA","ACTION_BUTTON_PRESS");
                 break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d("AA","ACTION_CANCEL");
+                 centerColor=centerCurrentClolr;
+                invalidate();
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                Log.d("AA","ACTION_POINTER_UP");
+                break;
             case MotionEvent.ACTION_UP:
                 upEventName = inCircleLocation(x,y);
+                Log.d("AA","ACTION_UP"+upEventName);
                 if(downEventName.equals(upEventName)){
-                    Log.d("AA",""+upEventName);
+
                    switch (upEventName){
                        case "inCenter":
+                           centerColor = centerCurrentClolr;
+                           invalidate();
                            if(null !=mListener){
                                mListener.onCenterClickListener();
                            }
                            break;
                        case "inBottom":
+                           centerColor = centerCurrentClolr;
+                           invalidate();
                            if(null !=mListener){
                                mListener.onBottomClickListener();
                            }
@@ -212,6 +256,10 @@ public class RemoteControlView extends View{
                        default:
                            break;
                    }
+                }
+                else {
+                    centerColor=centerCurrentClolr;
+                    invalidate();
                 }
                 break;
         }
@@ -243,5 +291,20 @@ public class RemoteControlView extends View{
             return "outSide";
         }
 
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        Boolean flag= false;
+        int[] states = getDrawableState();
+       int newBottomColor = bottomColorList.getColorForState(states,0);
+        if(newBottomColor!= bottomColor){
+            bottomColor =newBottomColor;
+            flag=true;
+        }
+        if(flag){
+            invalidate();
+        }
     }
 }

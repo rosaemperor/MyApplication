@@ -23,6 +23,7 @@
         <attr name="leftColor"/>
         <attr name="rightColor"/>
         <attr name="centerColor"/>
+        <attr name="centerBackGround" format="reference"/>
         <attr name="backgroundColor" format="color"/>
         <attr name="visiCenter" format="boolean"/>
         <attr name="centerText" format="string"/>
