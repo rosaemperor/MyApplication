@@ -50,6 +50,10 @@
        <!--android:id="@+id/swicth"-->
            <!--app:checked="true"-->
         <!--android:layout_height="50dp"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:text="算算手指在屏幕上移动的距离"
+        android:layout_height="80dp" />
     <com.myapplication.view.RemoteControlView
         android:layout_width="300dp"
         android:id="@+id/remote"

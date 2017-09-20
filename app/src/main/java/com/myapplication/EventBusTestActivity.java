@@ -42,7 +42,7 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
         binding.setEvent(this);
         EventBus.getDefault().register(this);
         Glide.with(this).load("http://img.blog.csdn.net/20151014174714655").into(binding.imageView);
-        binding.simpDraweeView .setImageURI("http://img.blog.csdn.net/20151014174714655");
+        binding.simpDraweeView .setImageURI("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
         client=new OkHttpClient.Builder().
 //                addInterceptor(new Interceptor() {
 //            @Override
@@ -71,6 +71,9 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
                 Intent intent=new Intent();
                 intent.setClass(EventBusTestActivity.this,EventBusSendActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.load:
+                binding.simpDraweeView.setImageURI(binding.url.getText().toString());
                 break;
             case R.id.retrofit_test:
                 Call<LoginBean> string=apiHelp.getLoginString("15936562980","222222");

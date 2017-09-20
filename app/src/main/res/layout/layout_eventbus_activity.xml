@@ -44,7 +44,20 @@
     <ImageView
         android:layout_width="150dp"
         android:id="@+id/imageView"
+        android:visibility="gone"
         android:layout_height="160dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:text="加载"
+        android:id="@+id/load"
+        android:background="@color/c_AFAFAF"
+        android:padding="15dp"
+        android:onClick="@{event}"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/url"
+        android:layout_height="60dp" />
     <com.facebook.drawee.view.SimpleDraweeView
         android:layout_width="150dp"
         fresco:placeholderImage="@mipmap/ic_launcher"

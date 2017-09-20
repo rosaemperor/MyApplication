@@ -126,6 +126,7 @@ public class RemoteControlView extends View{
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         centerPaint = new Paint();
+        centerPaint.setAntiAlias(true);
         centerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 //        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mPaint.setTextSize(centerTextSize);
