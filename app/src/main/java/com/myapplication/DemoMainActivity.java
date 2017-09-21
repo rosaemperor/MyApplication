@@ -1,16 +1,19 @@
 package com.myapplication;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.view.Gravity;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
+import com.myapplication.activity.ContentTransitionActivity;
 import com.myapplication.databinding.AutoLayoutTestBinding;
 import com.myapplication.databinding.DemoPopLayoutBinding;
 import com.myapplication.testweidget.TestPopWindow;
@@ -49,9 +52,14 @@ public class DemoMainActivity extends AutoLayoutActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.textView:
-                popupWindow.showAtLocation(v, Gravity.BOTTOM,0,0);
+//                popupWindow.showAtLocation(v, Gravity.BOTTOM,0,0);
 //                popWindow.showAtLocation(binding.getRoot(), Gravity.BOTTOM,0,0);
-
+                Intent intent = new Intent();
+                intent.putExtra("AAA","AAA");
+                intent.setClass(DemoMainActivity.this, ContentTransitionActivity.class);
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation
+                        (DemoMainActivity.this,v,"image");
+                ActivityCompat.startActivity(DemoMainActivity.this,intent,optionsCompat.toBundle());
                 Snackbar.make(v,"snackbar.test",Snackbar.LENGTH_LONG).setAction("Action",null).show();
 
                 break;

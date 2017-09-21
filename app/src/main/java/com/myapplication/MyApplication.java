@@ -6,6 +6,8 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by Administrator on 2017/8/1.
@@ -25,9 +28,20 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AutoLayoutConifg.getInstance().useDeviceSize();
-        Fresco.initialize(this);
+        initFresco();
+
         checkPermissionApplication();
     }
+
+    private void initFresco() {
+        OkHttpClient httpClient= new OkHttpClient();
+        ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+                .newBuilder(this,httpClient)
+                .build();
+        Fresco.initialize(this,config);
+
+    }
+
     private void checkPermissionApplication() {
         permissionItems.add(new PermissionItem(Manifest.permission.CAMERA,"相机",R.mipmap.ic_launcher));
         permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE,"打电话",R.mipmap.ic_launcher));

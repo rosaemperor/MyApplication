@@ -32,6 +32,7 @@ public class RemoteControlView extends View{
     private int rightColor ;
     private int centerColor=Color.GREEN;
     private int centerCurrentClolr=centerColor;
+    private int bottomCurrentColor;
     private int backgroundColor=Color.BLACK;
     private boolean visiableCenter;
     private String centerText="ok";
@@ -77,6 +78,7 @@ public class RemoteControlView extends View{
         leftColor = ContextCompat.getColor(context,R.color.c_AFAFAF);
         topColor =  ContextCompat.getColor(context,R.color.c_AFAFAF);
         bottomColor =  ContextCompat.getColor(context,R.color.c_AFAFAF);
+        bottomCurrentColor = bottomColor;
         backgroundColor = ContextCompat.getColor(context,R.color.c_ffffff);
         centerTextSize=(int)TypedValue.applyDimension(TypedValue
                         .COMPLEX_UNIT_SP,16,getResources().getDisplayMetrics());
@@ -141,8 +143,8 @@ public class RemoteControlView extends View{
         rightPaint.setStyle(Paint.Style.STROKE);
         rightPaint.setColor(topColor);
         bottomPaint= new Paint();
-        bottomPaint.setStyle(Paint.Style.STROKE);
-        bottomPaint.setColor(topColor);
+        bottomPaint.setStyle(Paint.Style.FILL);
+
     }
 
     @Override
@@ -171,6 +173,7 @@ public class RemoteControlView extends View{
         backgoundRectF.right=getMeasuredWidth();
         backgoundRectF.bottom =getMeasuredWidth();
         canvas.drawRect(backgoundRectF,mPaint);
+        bottomPaint.setColor(bottomColor);
         canvas.drawArc(backgoundRectF,45,90,true,bottomPaint);
         mPaint.setColor(Color.WHITE);
         canvas.drawText(bottomText,backgoundRectF.centerX()-bottomTextBounds.width()/2, (float) (backgoundRectF.height()
@@ -204,6 +207,10 @@ public class RemoteControlView extends View{
                         centerColor =ContextCompat.getColor(getContext(),R.color.colorAccent);
                         invalidate();
                         break;
+                    case "inBottom":
+                        bottomColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        invalidate();
+                        break;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -214,6 +221,7 @@ public class RemoteControlView extends View{
             case MotionEvent.ACTION_CANCEL:
                 Log.d("AA","ACTION_CANCEL");
                  centerColor=centerCurrentClolr;
+                bottomColor =bottomCurrentColor;
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -234,6 +242,7 @@ public class RemoteControlView extends View{
                            break;
                        case "inBottom":
                            centerColor = centerCurrentClolr;
+                           bottomColor = bottomCurrentColor;
                            invalidate();
                            if(null !=mListener){
                                mListener.onBottomClickListener();

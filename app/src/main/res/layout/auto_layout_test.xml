@@ -20,8 +20,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="384px"
-            android:layout_height="640px"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
             android:onClick="@{event}"
             android:layout_gravity="center_horizontal"
             android:background="#ff7ecc16"
