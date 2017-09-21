@@ -14,6 +14,11 @@
               xmlns:remoteView="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -54,9 +59,11 @@
         android:layout_width="match_parent"
         android:text="算算手指在屏幕上移动的距离"
         android:layout_height="80dp" />
+    </LinearLayout>
     <com.myapplication.view.RemoteControlView
         android:layout_width="300dp"
         android:id="@+id/remote"
+        android:layout_gravity="center_horizontal"
         remoteView:backgroundColor="#ffffff"
         remoteView:bottomColor="@drawable/bottom_color"
         android:layout_height="300dp"/>
