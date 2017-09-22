@@ -44,7 +44,6 @@
     <ImageView
         android:layout_width="150dp"
         android:id="@+id/imageView"
-        android:visibility="gone"
         android:layout_height="160dp"/>
     <TextView
         android:layout_width="match_parent"

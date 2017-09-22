@@ -24,7 +24,7 @@ import com.myapplication.R;
  * Created by Administrator on 2017/9/18.
  */
 
-public class RemoteControlView extends View{
+public class RemoteControlView extends View  {
     private int bottomColor;
     private ColorStateList bottomColorList=ColorStateList.valueOf(Color.GRAY);
     private int topColor;
@@ -173,7 +173,7 @@ public class RemoteControlView extends View{
         backgoundRectF.right=getMeasuredWidth();
         backgoundRectF.bottom =getMeasuredWidth();
         canvas.drawRect(backgoundRectF,mPaint);
-        bottomPaint.setColor(bottomColor);
+        bottomPaint.setColor(bottomColorList.getDefaultColor());
         canvas.drawArc(backgoundRectF,45,90,true,bottomPaint);
         mPaint.setColor(Color.WHITE);
         canvas.drawText(bottomText,backgoundRectF.centerX()-bottomTextBounds.width()/2, (float) (backgoundRectF.height()
@@ -208,8 +208,8 @@ public class RemoteControlView extends View{
                         invalidate();
                         break;
                     case "inBottom":
-                        bottomColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
-                        invalidate();
+//                        bottomColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
+//                        invalidate();
                         break;
                 }
                 break;
@@ -221,7 +221,7 @@ public class RemoteControlView extends View{
             case MotionEvent.ACTION_CANCEL:
                 Log.d("AA","ACTION_CANCEL");
                  centerColor=centerCurrentClolr;
-                bottomColor =bottomCurrentColor;
+//                bottomColor =bottomCurrentColor;
                 invalidate();
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -242,7 +242,7 @@ public class RemoteControlView extends View{
                            break;
                        case "inBottom":
                            centerColor = centerCurrentClolr;
-                           bottomColor = bottomCurrentColor;
+//                           bottomColor = bottomCurrentColor;
                            invalidate();
                            if(null !=mListener){
                                mListener.onBottomClickListener();
@@ -303,9 +303,10 @@ public class RemoteControlView extends View{
 
     }
 
+
     @Override
     protected void drawableStateChanged() {
-        super.drawableStateChanged();
+
         Boolean flag= false;
         int[] states = getDrawableState();
        int newBottomColor = bottomColorList.getColorForState(states,0);
@@ -316,5 +317,8 @@ public class RemoteControlView extends View{
         if(flag){
             invalidate();
         }
+        super.drawableStateChanged();
     }
+
+
 }

@@ -41,7 +41,7 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
         binding= DataBindingUtil.setContentView(EventBusTestActivity.this,R.layout.layout_eventbus_activity);
         binding.setEvent(this);
         EventBus.getDefault().register(this);
-        Glide.with(this).load("http://img.blog.csdn.net/20151014174714655").into(binding.imageView);
+        Glide.with(this).load("http://img.blog.csdn.net/20150422171814059?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmlyZHNhY3Rpb24=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast").into(binding.imageView);
         binding.simpDraweeView .setImageURI("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
         client=new OkHttpClient.Builder().
 //                addInterceptor(new Interceptor() {
