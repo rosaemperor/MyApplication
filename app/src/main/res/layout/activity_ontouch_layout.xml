@@ -7,7 +7,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="test"
-            type="com.myapplication.bean.TestBean"/>
+            type="com.myapplication.bean.TestBean" />
     </data>
 <LinearLayout
               android:orientation="vertical"

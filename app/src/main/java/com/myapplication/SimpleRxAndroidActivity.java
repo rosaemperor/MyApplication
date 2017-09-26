@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.myapplication.adapter.TabLayoutPagerAdapter;
@@ -37,10 +38,22 @@ public class SimpleRxAndroidActivity extends AppCompatActivity{
         binding.viewpager.setAdapter(new TabLayoutPagerAdapter(getSupportFragmentManager(),SimpleRxAndroidActivity.this,list));
         binding.tablayout.setupWithViewPager(binding.viewpager);
         binding.tablayout.setTabMode(TabLayout.MODE_FIXED);
+//        TableLayout.LayoutParams layoutParams=binding.tablayout.generateLayoutParams(getBaseContext().obt);
+
+        LinearLayout.LayoutParams layoutParams1= new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams
+                .MATCH_PARENT,1);
         TabLayout.Tab tab= binding.tablayout.getTabAt(0);
         TextView textView=new TextView(SimpleRxAndroidActivity.this);
         textView.setText("测试");
         tab.setCustomView(textView);
+        TabLayout.Tab tab1= binding.tablayout.getTabAt(1);
+        TextView textView1=new TextView(SimpleRxAndroidActivity.this);
+        textView1.setText("测试");
+        tab1.setCustomView(textView1);
+        TabLayout.Tab tab2= binding.tablayout.getTabAt(2);
+        TextView textView2=new TextView(SimpleRxAndroidActivity.this);
+        textView2.setText("测试");
+        tab2.setCustomView(textView2);
     }
 
 //    @Override

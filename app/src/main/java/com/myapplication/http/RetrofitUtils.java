@@ -40,6 +40,7 @@ public class RetrofitUtils {
                 Request request = chain.request().newBuilder()
                         .addHeader("Content-Type", "text/html; charset=UTF-8")
                         .build();
+                Log.d("AAA",""+request.url().toString());
                 return chain.proceed(request);
             }
         })
