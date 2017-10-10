@@ -19,6 +19,7 @@ import com.zhy.autolayout.AutoLayoutActivity;
 public class ImageListActivity extends AutoLayoutActivity implements View.OnClickListener{
       private ActivityImageListBinding binding;
     private LinearLayoutManager manager;
+    private ImageListAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,8 @@ public class ImageListActivity extends AutoLayoutActivity implements View.OnClic
         manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         binding.imageRecycleView.setLayoutManager(manager);
-        binding.imageRecycleView.setAdapter(new ImageListAdapter(this));
+        adapter = new ImageListAdapter(this);
+        binding.imageRecycleView.setAdapter(adapter);
         binding.imageRecycleView.setNestedScrollingEnabled(false);
 
     }
@@ -39,5 +41,13 @@ public class ImageListActivity extends AutoLayoutActivity implements View.OnClic
                 Toast.makeText(this, "添加图片" , Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        LinearLayout.LayoutParams layoutParams= (LinearLayout.LayoutParams) binding.imageRecycleView.getLayoutParams();
+//        layoutParams.width=adapter.getItemCount()*adapter
+//        binding.imageRecycleView.setLayoutParams(layoutParams);
     }
 }

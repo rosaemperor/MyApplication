@@ -15,9 +15,14 @@ import com.myapplication.databinding.ItemIamgeListBinding;
 
 public class ImageListAdapter  extends RecyclerView.Adapter{
     private Context context;
+    private int itemWidth=100;
 
     public ImageListAdapter(Context context) {
         this.context = context;
+    }
+
+    public int getItemWidth() {
+        return itemWidth;
     }
 
     @Override
@@ -25,6 +30,7 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
         RecyclerView.ViewHolder viewHolder = new RecyclerView.ViewHolder(LayoutInflater.from(
                 context).inflate(R.layout.item_iamge_list, parent,
                 false)) {};
+        itemWidth=viewHolder.itemView.getWidth();
         return viewHolder;
     }
 
@@ -36,6 +42,6 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 8;
     }
 }
