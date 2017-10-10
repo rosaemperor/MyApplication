@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data
+        >
+        <variable
+            name="event"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:paddingLeft="25dp"
+              android:paddingRight="25dp"
+              android:paddingTop="25dp"
+              android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/c_AFAFAF"
+        android:text="自定义遥控器view"
+        android:paddingTop="20dp"
+        android:id="@+id/RemoteControlView"
+        android:paddingBottom="20dp"
+        android:onClick="@{event}"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/c_AFAFAF"
+        android:text="横向图片列表"
+        android:paddingTop="20dp"
+        android:id="@+id/images_list"
+        android:paddingBottom="20dp"
+        android:onClick="@{event}"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout></layout>

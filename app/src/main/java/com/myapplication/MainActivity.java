@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.myapplication.activity.ViewsTestActivity;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
             Intent intent=new Intent();
-            intent.setClass(MainActivity.this,TouchTestActivity.class);
+            intent.setClass(MainActivity.this,ViewsTestActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
             Intent intent=new Intent();
