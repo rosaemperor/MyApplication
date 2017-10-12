@@ -204,13 +204,26 @@ public class RemoteControlView extends View  {
                downEventName= inCircleLocation(x,y);
                 switch (inCircleLocation(x,y)){
                     case "inCenter":
-                        centerColor =ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        centerColor =ContextCompat.getColor(getContext(),R.color.colorPrimaryDark);
                         invalidate();
                         break;
                     case "inBottom":
-//                        bottomColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
-//                        invalidate();
+                        bottomColor = ContextCompat.getColor(getContext(),R.color.colorPrimaryDark);
+                        invalidate();
                         break;
+                    case "inRight":
+                        rightColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        invalidate();
+                        break;
+                    case "inTop":
+                        topColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        invalidate();
+                        break;
+                    case "inLeft":
+                        leftColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
+                        invalidate();
+                        break;
+
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -229,21 +242,15 @@ public class RemoteControlView extends View  {
                 break;
             case MotionEvent.ACTION_UP:
                 upEventName = inCircleLocation(x,y);
-                Log.d("AA","ACTION_UP"+upEventName);
                 if(downEventName.equals(upEventName)){
-
+                    backCurrentColor();
                    switch (upEventName){
                        case "inCenter":
-                           centerColor = centerCurrentClolr;
-                           invalidate();
                            if(null !=mListener){
                                mListener.onCenterClickListener();
                            }
                            break;
                        case "inBottom":
-                           centerColor = centerCurrentClolr;
-//                           bottomColor = bottomCurrentColor;
-                           invalidate();
                            if(null !=mListener){
                                mListener.onBottomClickListener();
                            }
@@ -274,6 +281,15 @@ public class RemoteControlView extends View  {
                 break;
         }
         return true;
+    }
+
+    private void backCurrentColor() {
+        centerColor = centerCurrentClolr;
+        bottomColor = bottomCurrentColor;
+        leftColor = centerCurrentClolr;
+        topColor = centerCurrentClolr;
+        rightColor = centerCurrentClolr;
+        invalidate();
     }
 
     private String  inCircleLocation(float x, float y) {
