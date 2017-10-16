@@ -16,14 +16,25 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            dataBinding{
-                enabled=false
-            }
         }
         debug{
             dataBinding{
                 enabled=true
             }
+        }
+    }
+    productFlavors {
+        MissouriRiver {}
+        wandoujia {}
+        baidu {}
+        qq {}
+        lenovo {}
+        shouji {}
+        anzhi {}
+        xiaomi {}
+        huawei {}
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
     }
 }

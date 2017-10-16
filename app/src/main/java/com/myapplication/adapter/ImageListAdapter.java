@@ -2,6 +2,7 @@ package com.myapplication.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableInt;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.myapplication.databinding.ItemIamgeListBinding;
 public class ImageListAdapter  extends RecyclerView.Adapter{
     private Context context;
     private int itemWidth=100;
+    private ObservableInt width= new ObservableInt(itemWidth);
 
     public ImageListAdapter(Context context) {
         this.context = context;
@@ -38,6 +40,7 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ItemIamgeListBinding binding = DataBindingUtil.bind(holder.itemView.getRootView());
         binding.text2.setText(position+"");
+//        Log.d("AAA",""+width);
     }
 
     @Override

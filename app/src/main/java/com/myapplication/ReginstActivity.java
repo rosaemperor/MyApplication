@@ -4,9 +4,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.myapplication.Interface.APIHelp;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.bean.ReginstMessageBean;
 import com.myapplication.databinding.LayoutReginstActivityBinding;
@@ -44,12 +46,28 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void reginst() {
-        RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333").enqueue(new Callback<LoginBean>(){
+//        RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333").enqueue(new Callback<LoginBean>(){
+//            @Override
+//            public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
+//                     if(response.code()==200){
+//                         Toast.makeText(ReginstActivity.this,"200",Toast.LENGTH_LONG).show();
+//                         Log.d("AAA",""+response.body().toString());
+//                     }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<LoginBean> call, Throwable t) {
+//
+//            }
+//        });
+        RetrofitUtils.getInstance().createService(APIHelp.class).getLoginString("15936562980","333333").enqueue(new Callback<LoginBean>() {
             @Override
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
-                     if(response.code()==200){
-                         Toast.makeText(ReginstActivity.this,"200",Toast.LENGTH_LONG).show();
-                     }
+                if(response.code()==200){
+                    Toast.makeText(ReginstActivity.this,"200",Toast.LENGTH_LONG).show();
+                    Log.d("AAA",""+response.body().toString());
+                }
+
             }
 
             @Override
@@ -58,4 +76,5 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
     }
+
 }

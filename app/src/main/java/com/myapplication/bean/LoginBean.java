@@ -1,7 +1,5 @@
 package com.myapplication.bean;
 
-import android.databinding.ObservableField;
-
 /**
  * Created by Administrator on 2017/8/24.
  */
@@ -10,15 +8,15 @@ public class LoginBean {
     private String operate_mode;
     private String token;
     private String ab_user;
-    private ObservableField<String> updated_at;
-
-    public ObservableField<String> getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(ObservableField<String> updated_at) {
-        this.updated_at = updated_at;
-    }
+//    private ObservableField<String> updated_at;
+//
+//    public ObservableField<String> getUpdated_at() {
+//        return updated_at;
+//    }
+//
+//    public void setUpdated_at(ObservableField<String> updated_at) {
+//        this.updated_at = updated_at;
+//    }
 
     public String getTp_user() {
         return tp_user;
