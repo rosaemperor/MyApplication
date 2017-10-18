@@ -47,6 +47,7 @@ public class RetrofitUtils {
                 .build();
 
 //        client.interceptors().add(loggingInterceptor);
+        client.interceptors().add(loggingInterceptor);
         retrofit=new Retrofit.Builder()
                 .baseUrl( "http://api.ih2ome.cn/")
                 .addConverterFactory(GsonConverterFactory.create())

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.myapplication.activity.ViewsTestActivity;
+import com.myapplication.bean.student;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,10 +82,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = item.getItemId();{
+            student student= new student("AAAA");
+        }
 
         if (id == R.id.nav_camera) {
             Intent intent=new Intent();
+
             intent.setClass(MainActivity.this,DemoMainActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
