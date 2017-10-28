@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.myapplication.LoginActivity;
 import com.myapplication.R;
 import com.myapplication.SimpleRxAndroidActivity;
 import com.myapplication.databinding.RxAndroidTestBinding;
@@ -35,8 +36,8 @@ public class RxAndroidTestViewModel implements OnClickListener{
                 context.startActivity(new Intent(context, SimpleRxAndroidActivity.class));
                 break;
             case R.id.call:
-                Intent intent = new Intent(); intent.setAction(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:15936562980"));
+                Intent intent = new Intent();
+                intent.setClass(context, LoginActivity.class);
                 context.startActivity(intent);
                 break;
             default:

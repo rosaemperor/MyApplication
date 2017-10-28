@@ -36,6 +36,7 @@
         <activity android:name=".SimpleRxAndroidActivity"/>
         <activity android:name=".activity.ViewsTestActivity"/>
         <activity android:name=".activity.ImageListActivity"/>
+        <activity android:name=".LoginActivity"/>
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
             android:value="GlideModule"/>
     </application>

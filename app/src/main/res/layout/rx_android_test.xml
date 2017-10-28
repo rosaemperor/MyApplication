@@ -68,6 +68,6 @@
         android:onClick="@{event}"
         android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
-        android:text="打电话测试"
+        android:text="MVVM模式测试"
         android:layout_height="wrap_content" />
 </LinearLayout></layout>
