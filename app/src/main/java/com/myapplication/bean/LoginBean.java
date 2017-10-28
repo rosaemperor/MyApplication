@@ -1,10 +1,15 @@
 package com.myapplication.bean;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.android.databinding.library.baseAdapters.BR;
+
 /**
  * Created by Administrator on 2017/8/24.
  */
 
-public class LoginBean {
+public class LoginBean extends BaseObservable{
     private String operate_mode;
     private String token;
     private String ab_user;
@@ -43,12 +48,13 @@ public class LoginBean {
     public void setOperate_mode(String operate_mode) {
         this.operate_mode = operate_mode;
     }
-
+@Bindable
     public String getToken() {
         return token;
     }
 
     public void setToken(String token) {
         this.token = token;
+        notifyPropertyChanged(com.myapplication.BR.token);
     }
 }
