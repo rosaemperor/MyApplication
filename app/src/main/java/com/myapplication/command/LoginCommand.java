@@ -2,6 +2,7 @@ package com.myapplication.command;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.myapplication.R;
@@ -34,5 +35,8 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
             Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
                 break;
         }
+    }
+    public void listItemClick(AdapterView<?> parent, View view, int position, long id){
+
     }
 }
