@@ -1,5 +1,7 @@
 package com.myapplication.http;
 
+import android.util.Log;
+
 import com.myapplication.Interface.APIHelp;
 
 import java.io.IOException;
@@ -34,11 +36,11 @@ public class RetrofitUtils {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Response response = chain.proceed(chain.request());
-//                Log.d("AAA",""+response.body().string());
+                Log.d("AAA",""+response.body().string());
                 Request request = chain.request().newBuilder()
                         .addHeader("Content-Type", "text/html; charset=UTF-8")
                         .build();
-//                Log.d("AAA",""+request.url().toString());
+                Log.d("AAA",""+request.url().toString());
                 return chain.proceed(request);
             }
         })
@@ -47,7 +49,7 @@ public class RetrofitUtils {
                 .build();
 
 //        client.interceptors().add(loggingInterceptor);
-        client.interceptors().add(loggingInterceptor);
+//        client.interceptors().add(loggingInterceptor);
         retrofit=new Retrofit.Builder()
                 .baseUrl( "http://api.ih2ome.cn/")
                 .addConverterFactory(GsonConverterFactory.create())
