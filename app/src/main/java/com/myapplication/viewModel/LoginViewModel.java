@@ -5,8 +5,12 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
 import com.myapplication.LoginActivity;
+import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.command.LoginCommand;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -17,6 +21,7 @@ import io.reactivex.Observer;
 
 public class LoginViewModel {
     private Activity activity;
+
 
     //model
 //    private LoginBean bean;
@@ -35,6 +40,7 @@ public class LoginViewModel {
     public final ObservableField<String> title = new ObservableField<>();
 
     public final ObservableField<LoginBean> bean = new ObservableField<LoginBean>() ;
+    public final ObservableField<ListAdapter> adapter = new ObservableField<>();
 
 
 
@@ -50,6 +56,11 @@ public class LoginViewModel {
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
         loginBean.setToken("AAA");
+        List<LoginBean> list= new ArrayList<>();
+        for(int i =0 ;i<5;i++){
+            list.add(loginBean);
+        }
+        adapter.set(new ListAdapter(activity,list));
         bean.set(loginBean);
     }
     public void changeString(String tpUser){
