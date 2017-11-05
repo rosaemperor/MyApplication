@@ -26,6 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:id="@+id/title"
+        android:onClick="@{viewModel.command}"
         android:layout_marginTop="20dp"
         android:background="@color/c_AFAFAF"
         android:gravity="center"
@@ -34,6 +36,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:padding="20dp"
         android:layout_marginTop="20dp"
         android:background="@color/c_AFAFAF"
@@ -43,6 +46,7 @@
     <ListView
         android:layout_width="match_parent"
         android:id="@+id/list_view"
+        android:visibility="@{viewModel.viewStyle.showListView}"
         app:adapter="@{viewModel.adapter}"
         app:onItemClickListener="@{viewModel.command.listItemClick}"
         android:layout_height="match_parent"/>

@@ -24,9 +24,10 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.login:
-                Toast.makeText(v.getContext(),"AAA",Toast.LENGTH_LONG).show();
+            case R.id.title:
+                Toast.makeText(v.getContext(),"title",Toast.LENGTH_LONG).show();
                 viewModel.changeString("这里是设置来的");
+
                 break;
         }
     }
@@ -34,10 +35,18 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
         switch (view.getId()){
             case R.id.login:
             Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
+                viewModel.viewStyle.showListView.set(View.GONE);
                 break;
         }
     }
 
+    /**
+     * ListView的item点击事件
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     public void listItemClick(AdapterView<?> parent, View view, int position, long id){
            Toast.makeText(view.getContext(),"position"+position,Toast.LENGTH_LONG).show();
     }

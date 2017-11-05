@@ -3,6 +3,7 @@ package com.myapplication.viewModel;
 import android.app.Activity;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 
 import com.myapplication.LoginActivity;
 import com.myapplication.adapter.ListAdapter;
@@ -34,6 +35,7 @@ public class LoginViewModel {
     public class ViewStyle{
         public final ObservableBoolean isRefreshing = new ObservableBoolean();
         public final ObservableBoolean progressRefreshing = new ObservableBoolean();
+        public final ObservableInt showListView = new ObservableInt();
     }
     //数据
     public final ObservableField<String> ImageUrl =new ObservableField<>();
@@ -60,6 +62,7 @@ public class LoginViewModel {
         for(int i =0 ;i<5;i++){
             list.add(loginBean);
         }
+        title.set("title");
         adapter.set(new ListAdapter(activity,list));
         bean.set(loginBean);
     }

@@ -6,10 +6,10 @@
 
 <LinearLayout
               android:orientation="vertical"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <TextView
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:text="222222"
         android:gravity="center"
         android:background="@color/c_AFAFAF"
