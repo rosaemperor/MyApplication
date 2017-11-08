@@ -10,6 +10,7 @@ import com.myapplication.LoginActivity;
 import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.command.LoginCommand;
+import com.myapplication.utils.NdkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,8 @@ public class LoginViewModel {
 
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
-        loginBean.setToken("AAA");
+        loginBean.setToken(NdkUtils.helloWorld());
+
         List<LoginBean> list= new ArrayList<>();
         for(int i =0 ;i<5;i++){
             list.add(loginBean);
