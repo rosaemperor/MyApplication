@@ -1,6 +1,7 @@
 package com.myapplication.viewModel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -21,7 +22,7 @@ import io.reactivex.Observer;
  */
 
 public class LoginViewModel {
-    private Activity activity;
+    private Context activity;
 
 
     //model
@@ -32,6 +33,11 @@ public class LoginViewModel {
      * 用来控制view的显示样式
      */
     public final ViewStyle viewStyle = new ViewStyle();
+
+    public void destoryAdapter() {
+        adapter.set(null);
+    }
+
     public class ViewStyle{
         public final ObservableBoolean isRefreshing = new ObservableBoolean();
         public final ObservableBoolean progressRefreshing = new ObservableBoolean();
@@ -50,7 +56,7 @@ public class LoginViewModel {
     public final LoginCommand command = new LoginCommand(this);
 
 
-    public LoginViewModel(Activity activity, long id) {
+    public LoginViewModel(Context activity, long id) {
         this.activity = activity;
         loadData(id);
     }
@@ -69,4 +75,10 @@ public class LoginViewModel {
     public void changeString(String tpUser){
         bean.get().setToken(tpUser);
     }
+
+    public void onDestory() {
+        adapter.get().destory();
+        activity = null;
+    }
+
 }

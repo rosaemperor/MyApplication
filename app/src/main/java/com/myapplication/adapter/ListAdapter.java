@@ -51,11 +51,21 @@ public class ListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_iamge_list,null);
-            TextView textView= (TextView) convertView.findViewById(R.id.text2);
+        TextView textView;
+            if(convertView == null){
+                convertView = LayoutInflater.from(context).inflate(R.layout.item_iamge_list,null);
+            textView= (TextView) convertView.findViewById(R.id.text2);
+                convertView.setTag(textView);
+            }else{
+                textView = (TextView) convertView.getTag();
+            }
             textView.setText(list.get(position).getToken());
 
         return convertView;
+    }
+
+    public void destory() {
+        context = null;
+        list = null;
     }
 }

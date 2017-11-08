@@ -18,16 +18,27 @@ import com.squareup.leakcanary.RefWatcher;
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginLayoutBinding binding;
     public static final String EXTRA_KEY_NEWS_ID = "key_news_id";
-    private ListView listView;
     private RefWatcher refWatcher;
+    private LoginViewModel viewModel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         long id = getIntent().getLongExtra(EXTRA_KEY_NEWS_ID, -1);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login_layout);
-        binding.setViewModel(new LoginViewModel(this,id));
+        viewModel = new LoginViewModel(this,id);
+        binding.setViewModel(viewModel);
 //        binding.setVariable(com.myapplication.BR.viewModel,new LoginViewModel(this,id));
         refWatcher = com.myapplication.application.MyApplication.getRefWatcher(this);
         refWatcher.watch(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+//        viewModel.destoryAdapter();
+        binding=null;
+        viewModel.onDestory();
+
+        super.onDestroy();
+
     }
 }
