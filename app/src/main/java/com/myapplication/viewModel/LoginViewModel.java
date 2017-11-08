@@ -64,7 +64,7 @@ public class LoginViewModel {
 
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
-        loginBean.setToken(NdkUtils.helloWorld());
+        loginBean.setToken(NdkUtils.daozhuanString());
 
         List<LoginBean> list= new ArrayList<>();
         for(int i =0 ;i<5;i++){

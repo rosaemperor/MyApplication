@@ -9,4 +9,6 @@ public class NdkUtils {
         System.loadLibrary("ndktest");
     }
     public static native String helloWorld();
+
+    public static native String daozhuanString();
 }
