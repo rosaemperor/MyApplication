@@ -23,12 +23,44 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--optimizationpasses 1
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
 -keep @com.facebook.common.internal.DoNotStrip class *
 -keepclassmembers class * {
     @com.facebook.common.internal.DoNotStrip *;
 }
+#############################################
+       #
+       # Android开发中一些需要保留的公共部分
+       #
+       #############################################
 
+       # 保留我们使用的四大组件，自定义的Application等等这些类不被混淆
+       # 因为这些子类都有可能被外部调用
+       -keep public class * extends android.app.Activity
+       -keep public class * extends android.app.Appliction
+       -keep public class * extends android.app.Service
+       -keep public class * extends android.content.BroadcastReceiver
+       -keep public class * extends android.content.ContentProvider
+       -keep public class * extends android.app.backup.BackupAgentHelper
+       -keep public class * extends android.preference.Preference
+       -keep public class * extends android.view.View
+       -keep public class com.android.vending.licensing.ILicensingService
+# 保留support下的所有类及其内部类
+       -keep class android.support.** {*;}
+       # 保留继承的
+              -keep public class * extends android.support.v4.**
+              -keep public class * extends android.support.v7.**
+              -keep public class * extends android.support.annotation.**
+
+# 保留在Activity中的方法参数是view的方法，
+       # 这样以来我们在layout中写的onClick就不会被影响
+       -keepclassmembers class * extends android.app.Activity{
+           public void *(android.view.View);
+       }
 # Keep native methods
 -keepclassmembers class * {
     native <methods>;

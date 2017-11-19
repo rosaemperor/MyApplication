@@ -6,6 +6,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
+import com.myapplication.BuildConfig;
 import com.myapplication.LoginActivity;
 import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
@@ -65,7 +66,11 @@ public class LoginViewModel {
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
         loginBean.setToken(NdkUtils.daozhuanString());
-
+        if(BuildConfig.DEBUG){
+            loginBean.setToken("debug");
+        }else {
+            loginBean.setToken("release");
+        }
         List<LoginBean> list= new ArrayList<>();
         for(int i =0 ;i<5;i++){
             list.add(loginBean);
