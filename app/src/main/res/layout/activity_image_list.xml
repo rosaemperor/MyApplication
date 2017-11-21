@@ -7,24 +7,33 @@
             type="android.view.View.OnClickListener"/>
 
     </data>
-<HorizontalScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
 <LinearLayout
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:gravity="center_vertical"
+              android:padding="25dp"
               android:layout_height="wrap_content">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/imageRecycleView"
         android:layout_width="300dp"
         android:scrollbars="none"
+        android:visibility="gone"
         android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="100dp"
         android:onClick="@{event}"
         android:id="@+id/add_image"
+        android:visibility="gone"
         android:background="@color/colorAccent"
         android:layout_height="100dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/rongtest"
+        android:text="融360测试"
+        android:gravity="center"
+        android:onClick="@{event}"
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp"/>
 
-</LinearLayout></HorizontalScrollView></layout>
+</LinearLayout></layout>

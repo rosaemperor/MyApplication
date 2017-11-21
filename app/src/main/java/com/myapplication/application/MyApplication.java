@@ -52,6 +52,11 @@ public class MyApplication extends Application {
     private void checkPermissionApplication() {
         permissionItems.add(new PermissionItem(Manifest.permission.CAMERA,"相机", R.mipmap.ic_launcher));
         permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE,"打电话",R.mipmap.ic_launcher));
+        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION));
+        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_COARSE_LOCATION));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_CALL_LOG));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_SMS));
         HiPermission.create(this).title("权限")
                 .permissions(permissionItems)
                 .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//permission icon color
@@ -87,4 +92,10 @@ public class MyApplication extends Application {
         MyApplication application = (MyApplication) context.getApplicationContext();
         return application.refWatcher;
     }
+   @Override
+    public String getPackageName() {
+
+//        return "com.rong360.app.crawler";
+       return super.getPackageName();
+   }
 }

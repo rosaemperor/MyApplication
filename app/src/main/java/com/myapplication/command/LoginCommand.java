@@ -1,5 +1,6 @@
 package com.myapplication.command;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,6 +8,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.myapplication.R;
+import com.myapplication.activity.KotlinActivity;
 import com.myapplication.base.BaseCommand;
 import com.myapplication.viewModel.LoginViewModel;
 
@@ -34,8 +36,11 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
     public void login(View view){
         switch (view.getId()){
             case R.id.login:
-            Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
-                viewModel.viewStyle.showListView.set(View.GONE);
+//            Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
+//                viewModel.viewStyle.showListView.set(View.GONE);
+                Intent intent = new Intent();
+                intent.setClass(view.getContext(), KotlinActivity.class);
+                view.getContext().startActivity(intent);
                 break;
         }
     }
