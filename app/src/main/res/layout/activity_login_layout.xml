@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:background="@color/c_AFAFAF"
+        android:background="@{viewModel.viewStyle.backgroundClolr}"
         android:gravity="center"
         android:onClick="@{viewModel.command.login}"
         android:id="@+id/login"

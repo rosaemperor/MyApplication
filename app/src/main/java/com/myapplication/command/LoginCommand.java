@@ -1,5 +1,6 @@
 package com.myapplication.command;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,6 @@ import com.myapplication.viewModel.LoginViewModel;
 
 public class LoginCommand extends BaseCommand implements View.OnClickListener{
     private LoginViewModel viewModel;
-
     public LoginCommand(LoginViewModel viewModel) {
         this.viewModel=viewModel;
     }
@@ -29,7 +29,6 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
             case R.id.title:
                 Toast.makeText(v.getContext(),"title",Toast.LENGTH_LONG).show();
                 viewModel.changeString("这里是设置来的");
-
                 break;
         }
     }
@@ -38,9 +37,10 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
             case R.id.login:
 //            Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
 //                viewModel.viewStyle.showListView.set(View.GONE);
-                Intent intent = new Intent();
-                intent.setClass(view.getContext(), KotlinActivity.class);
-                view.getContext().startActivity(intent);
+                viewModel.viewStyle.backgroundClolr.set(view.getContext().getColor(R.color.colorAccent));
+//                Intent intent = new Intent();
+//                intent.setClass(view.getContext(), KotlinActivity.class);
+//                view.getContext().startActivity(intent);
                 break;
         }
     }

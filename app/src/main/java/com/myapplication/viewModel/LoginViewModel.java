@@ -8,6 +8,7 @@ import android.databinding.ObservableInt;
 
 import com.myapplication.BuildConfig;
 import com.myapplication.LoginActivity;
+import com.myapplication.R;
 import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.command.LoginCommand;
@@ -44,6 +45,7 @@ public class LoginViewModel {
         public final ObservableBoolean isRefreshing = new ObservableBoolean();
         public final ObservableBoolean progressRefreshing = new ObservableBoolean();
         public final ObservableInt showListView = new ObservableInt();
+        public final ObservableInt backgroundClolr= new ObservableInt();
     }
     //数据
     public final ObservableField<String> ImageUrl =new ObservableField<>();
@@ -66,6 +68,7 @@ public class LoginViewModel {
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
         loginBean.setToken(NdkUtils.daozhuanString());
+        viewStyle.backgroundClolr.set(activity.getColor(R.color.colorPrimary));
         if(BuildConfig.DEBUG){
             loginBean.setToken("debug");
         }else {
