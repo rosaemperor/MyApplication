@@ -50,8 +50,8 @@ public class MyApplication extends Application {
     }
 
     private void checkPermissionApplication() {
-        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA,"相机", R.mipmap.ic_launcher));
-        permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE,"打电话",R.mipmap.ic_launcher));
+        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA));
+        permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE));
         permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION));
         permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_COARSE_LOCATION));
         permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
@@ -64,7 +64,7 @@ public class MyApplication extends Application {
                 .checkMutiPermission(new PermissionCallback() {
                     @Override
                     public void onClose() {
-                        Log.d("AAA","onClose");
+//                        Log.d("AAA","onClose");
                         System.exit(0);
                     }
 
@@ -73,7 +73,7 @@ public class MyApplication extends Application {
                      */
                     @Override
                     public void onFinish() {
-                        Log.d("AAA","onFinish");
+//                        Log.d("AAA","onFinish");
 
                     }
 

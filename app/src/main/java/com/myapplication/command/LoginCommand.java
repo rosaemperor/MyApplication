@@ -1,7 +1,10 @@
 package com.myapplication.command;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +15,7 @@ import com.myapplication.R;
 import com.myapplication.activity.KotlinActivity;
 import com.myapplication.base.BaseCommand;
 import com.myapplication.viewModel.LoginViewModel;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 /**
  * Created by Adminidtrator on 2017/10/28.
@@ -37,10 +41,11 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
             case R.id.login:
 //            Toast.makeText(view.getContext(),"login",Toast.LENGTH_LONG).show();
 //                viewModel.viewStyle.showListView.set(View.GONE);
-                viewModel.viewStyle.backgroundClolr.set(view.getContext().getColor(R.color.colorAccent));
-//                Intent intent = new Intent();
-//                intent.setClass(view.getContext(), KotlinActivity.class);
-//                view.getContext().startActivity(intent);
+//                viewModel.viewStyle.backgroundClolr.set(view.getContext().getColor(R.color.colorAccent));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:400-8181800"));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                view.getContext().startActivity(intent);
+
                 break;
         }
     }

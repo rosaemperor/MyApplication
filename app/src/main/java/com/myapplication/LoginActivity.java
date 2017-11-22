@@ -28,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         viewModel = new LoginViewModel(this,id);
         binding.setViewModel(viewModel);
 //        binding.setVariable(com.myapplication.BR.viewModel,new LoginViewModel(this,id));
-        refWatcher = com.myapplication.application.MyApplication.getRefWatcher(this);
-        refWatcher.watch(this);
+//        refWatcher = com.myapplication.application.MyApplication.getRefWatcher(this);
+//        refWatcher.watch(this);
     }
 
     @Override

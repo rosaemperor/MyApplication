@@ -5,10 +5,14 @@ import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.myapplication.BuildConfig;
 import com.myapplication.LoginActivity;
 import com.myapplication.R;
+import com.myapplication.adapter.ImageListAdapter;
 import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.command.LoginCommand;
@@ -54,6 +58,8 @@ public class LoginViewModel {
     public final ObservableField<LoginBean> bean = new ObservableField<LoginBean>() ;
     public final ObservableField<ListAdapter> adapter = new ObservableField<>();
 
+    public final ObservableField<RecyclerView.LayoutManager> manager = new ObservableField<>();
+    public final ObservableField<ImageListAdapter> iamgeAdapter= new ObservableField<>();
 
 
     //路由事件
@@ -68,6 +74,9 @@ public class LoginViewModel {
     private void loadData(long id) {
         LoginBean loginBean = new LoginBean();
         loginBean.setToken(NdkUtils.daozhuanString());
+        viewStyle.showListView.set(View.GONE);
+        manager.set(new LinearLayoutManager(activity));
+        iamgeAdapter.set(new ImageListAdapter(activity));
         viewStyle.backgroundClolr.set(activity.getColor(R.color.colorPrimary));
         if(BuildConfig.DEBUG){
             loginBean.setToken("debug");

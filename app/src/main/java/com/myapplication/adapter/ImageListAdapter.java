@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.myapplication.R;
 import com.myapplication.databinding.ItemIamgeListBinding;
+import com.myapplication.viewModel.ImageItemViewModel;
 
 /**
  * Created by Administrator on 2017/10/10.
@@ -18,7 +19,6 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
     private Context context;
     private int itemWidth=100;
     private ObservableInt width= new ObservableInt(itemWidth);
-
     public ImageListAdapter(Context context) {
         this.context = context;
     }
@@ -39,7 +39,7 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ItemIamgeListBinding binding = DataBindingUtil.bind(holder.itemView.getRootView());
-        binding.text2.setText(position+"");
+        binding.setViewModel(new ImageItemViewModel(context,position));
 //        Log.d("AAA",""+width);
     }
 
