@@ -50,6 +50,8 @@ public class MyApplication extends Application {
     }
 
     private void checkPermissionApplication() {
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_PHONE_STATE));
         permissionItems.add(new PermissionItem(Manifest.permission.CAMERA));
         permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE));
         permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION));

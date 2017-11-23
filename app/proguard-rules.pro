@@ -80,3 +80,17 @@
 -keepattributes Exceptions
 -dontwarn okio.**
 -dontwarn javax.annotation.**
+
+#zxing
+-dontwarn com.google.zxing.**
+-keep class com.google.zxing.** {*;} #gson
+-keep class com.google.gson.** { *; }
+# okhttp
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** {*;}
+-keep interface com.squareup.okhttp.** { *; }
+-dontwarn okio.**
+-keep class okio.** {*;}
+#x5 core
+-dontwarn com.tencent.**
+-keep class com.tencent.**{*;}

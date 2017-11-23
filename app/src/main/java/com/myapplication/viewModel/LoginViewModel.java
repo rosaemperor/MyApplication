@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.myapplication.BuildConfig;
@@ -16,6 +17,7 @@ import com.myapplication.adapter.ImageListAdapter;
 import com.myapplication.adapter.ListAdapter;
 import com.myapplication.bean.LoginBean;
 import com.myapplication.command.LoginCommand;
+import com.myapplication.http.RetrofitUtils;
 import com.myapplication.utils.NdkUtils;
 
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Adminidtrator on 2017/10/23.
@@ -31,7 +36,7 @@ import io.reactivex.Observer;
 public class LoginViewModel {
     private Context activity;
 
-
+    LoginBean loginBean;
     //model
 //    private LoginBean bean;
 
@@ -72,7 +77,7 @@ public class LoginViewModel {
     }
 
     private void loadData(long id) {
-        LoginBean loginBean = new LoginBean();
+        loginBean = new LoginBean();
         loginBean.setToken(NdkUtils.daozhuanString());
         viewStyle.showListView.set(View.GONE);
         manager.set(new LinearLayoutManager(activity));
@@ -94,6 +99,23 @@ public class LoginViewModel {
     public void changeString(String tpUser){
         bean.get().setToken(tpUser);
     }
+    public void updateUserMeddage(){
+       Call call= RetrofitUtils.getInstance().getHelp().getLoginString("15936562980","333333");
+       call.enqueue(new Callback<LoginBean>() {
+           @Override
+           public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
+               loginBean=response.body();
+               Log.d("TAG",""+loginBean.getToken());
+
+           }
+
+           @Override
+           public void onFailure(Call<LoginBean> call, Throwable t) {
+
+           }
+       });
+    }
+
 
     public void onDestory() {
         adapter.get().destory();

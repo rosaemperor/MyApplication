@@ -1,9 +1,13 @@
 package com.myapplication;
 
+import android.Manifest;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.myapplication.application.*;
@@ -27,6 +31,10 @@ public class LoginActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login_layout);
         viewModel = new LoginViewModel(this,id);
         binding.setViewModel(viewModel);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.d("TAG",""+Build.VERSION.SDK_INT);
+            checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
+        }
 //        binding.setVariable(com.myapplication.BR.viewModel,new LoginViewModel(this,id));
 //        refWatcher = com.myapplication.application.MyApplication.getRefWatcher(this);
 //        refWatcher.watch(this);
@@ -40,5 +48,10 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onDestroy();
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
