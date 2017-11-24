@@ -19,6 +19,7 @@ import com.myapplication.activity.KotlinActivity;
 import com.myapplication.base.BaseCommand;
 import com.myapplication.bean.Contact;
 import com.myapplication.utils.GetContactsUtil;
+import com.myapplication.utils.GetContactsUtils;
 import com.myapplication.viewModel.LoginViewModel;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
@@ -54,10 +55,14 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
 //             viewModel.updateUserMeddage();
 //                Log.d("AAA",""+Build.VERSION.SDK_INT);
 //                if(Build.VERSION.SDK_INT)
-                GetContactsUtil contactsUtil = new GetContactsUtil(view.getContext()) ;
-                List<Contact> contactList = contactsUtil.getContacts();
-                Log.d("TAG",""+contactList.size());
-                Log.d("TAG",""+contactList.get(22).getName()+contactList.get(22).getMobile());
+                GetContactsUtils utils= new GetContactsUtils();
+                  utils.init(view.getContext());
+                  utils.getSIMContacts();
+                  Log.d("login",""+utils.getSIMContacts().get(2).getMobile());
+//                GetContactsUtil contactsUtil = new GetContactsUtil(view.getContext()) ;
+//                List<Contact> contactList = contactsUtil.getContacts();
+//                Log.d("TAG",""+contactList.size());
+//                Log.d("TAG",""+contactList.get(22).getName()+contactList.get(22).getMobile());
                 break;
         }
     }
