@@ -80,11 +80,10 @@ public class EventBusTestActivity extends AppCompatActivity implements View.OnCl
                 string.enqueue(new Callback<LoginBean>() {
                     @Override
                     public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
-                        Log.d("AAA",""+response.code()+response.body().getOperate_mode());
+
                             String aaa=response.body().getOperate_mode();
                         SharedPreferences sharedPreferences=getSharedPreferences(shareName,MODE_PRIVATE);
                         SharedPreferences.Editor editor=sharedPreferences.edit();
-                        editor.putString("Token",""+response.body().getToken());
                     }
                     @Override
                     public void onFailure(Call<LoginBean> call, Throwable t) {
