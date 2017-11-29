@@ -27,7 +27,7 @@ class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
                 1 -> {
                 }
                 2 ->{
-                    Toast.makeText(this@EventBusSendActivity,"AAAAA",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@EventBusSendActivity,"AAAAA",Toast.LENGTH_LONG)
                 }
                 else -> {
                 }
