@@ -94,3 +94,8 @@
 #x5 core
 -dontwarn com.tencent.**
 -keep class com.tencent.**{*;}
+
+# banner 的混淆代码
+-keep class com.youth.banner.** {
+    *;
+ }

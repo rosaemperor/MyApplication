@@ -11,6 +11,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,6 +38,8 @@ public class RetrofitUtils {
             public Response intercept(Chain chain) throws IOException {
                 Response response = chain.proceed(chain.request());
                 Log.d("AAA",""+response.body().string());
+                ResponseBody responseBody= response.body();
+
                 Request request = chain.request().newBuilder()
                         .addHeader("Content-Type", "text/html; charset=UTF-8")
                         .build();

@@ -35,14 +35,10 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("TAG",""+Build.VERSION.SDK_INT);
             checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
         }
-//        binding.setVariable(com.myapplication.BR.viewModel,new LoginViewModel(this,id));
-//        refWatcher = com.myapplication.application.MyApplication.getRefWatcher(this);
-//        refWatcher.watch(this);
     }
 
     @Override
     protected void onDestroy() {
-//        viewModel.destoryAdapter();
         binding=null;
         viewModel.onDestory();
 
