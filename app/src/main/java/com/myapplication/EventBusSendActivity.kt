@@ -8,6 +8,7 @@ import android.widget.Toast
 
 import com.myapplication.bean.MessageEvent
 import com.myapplication.databinding.LayoutEventbusSendBinding
+import com.myapplication.utils.StringUtil
 
 import org.greenrobot.eventbus.EventBus
 
