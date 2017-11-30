@@ -78,16 +78,19 @@ class LoginViewModel(private var activity: Context?, id: Long) {
         loginBean!!.token = NdkUtils.daozhuanString()
         viewStyle.showListView.set(View.GONE)
         manager.set(LinearLayoutManager(activity))
-        iamgeAdapter.set(ImageListAdapter(activity))
+//        iamgeAdapter.set(ImageListAdapter(activity))
         viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
         if (BuildConfig.DEBUG) {
             loginBean!!.token = "debug"
         } else {
             loginBean!!.token = "release"
         }
-        val list = ArrayList<LoginBean>()
+        var list = ArrayList<LoginBean>()
         for (i in 0..4) {
             list.add(loginBean!!)
+        }
+        for(j  in 15 downTo 10){
+            Log.d("Kotlin",""+j)
         }
         title.set("title")
         adapter.set(ListAdapter(activity, list))

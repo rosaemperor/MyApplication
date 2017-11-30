@@ -59,7 +59,7 @@ public class ListAdapter extends BaseAdapter{
             }else{
                 textView = (TextView) convertView.getTag();
             }
-            textView.setText(list.get(position).getToken());
+            textView.setText(list.get(position).getToken()+position);
 
         return convertView;
     }
