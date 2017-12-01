@@ -34,6 +34,9 @@ class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+        for(i in 9 downTo 0){
+
+        }
     }
 
     override fun onClick(v: View) {
