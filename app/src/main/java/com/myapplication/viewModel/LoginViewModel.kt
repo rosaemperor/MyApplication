@@ -19,6 +19,7 @@ import com.myapplication.bean.LoginBean
 import com.myapplication.command.LoginCommand
 import com.myapplication.http.RetrofitUtils
 import com.myapplication.utils.NdkUtils
+import com.myapplication.utils.NdkUtilsForKotlin
 
 import java.util.ArrayList
 
@@ -75,7 +76,7 @@ class LoginViewModel(private var activity: Context?, id: Long) {
 
     private fun loadData(id: Long) {
         loginBean = LoginBean()
-        loginBean!!.token = NdkUtils.daozhuanString()
+        loginBean!!.token = NdkUtils.helloWorld()
         viewStyle.showListView.set(View.GONE)
         manager.set(LinearLayoutManager(activity))
 //        iamgeAdapter.set(ImageListAdapter(activity))
