@@ -45,11 +45,11 @@
         />
     <ListView
         android:layout_width="match_parent"
-        android:id="@+id/list_view"
-        android:visibility="@{viewModel.viewStyle.showListView}"
-        app:adapter="@{viewModel.adapter}"
-        app:onItemClickListener="@{viewModel.command.listItemClick}"
-        android:layout_height="match_parent"/>
+    android:id="@+id/list_view"
+    android:visibility="@{viewModel.viewStyle.showListView}"
+    app:adapter="@{viewModel.adapter}"
+    app:onItemClickListener="@{viewModel.command.listItemClick}"
+    android:layout_height="match_parent"/>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         app:layoutManager="@{viewModel.manager}"

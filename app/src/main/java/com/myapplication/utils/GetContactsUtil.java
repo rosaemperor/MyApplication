@@ -130,7 +130,7 @@ public class GetContactsUtil {
                         .getString(PHONES_DISPLAY_NAME_INDEX);
 
                 Contact contact = new Contact(contactName , phoneNumber) ;
-
+                contacts.add(contact);
             }
 
             phoneCursor.close();

@@ -20,9 +20,11 @@ public interface APIHelp {
     @FormUrlEncoded
     @POST("api/v1/auth?terminal="+terminal)
     Call<LoginBean> getLoginString(@Field("username") String username, @Field("password") String s1);
-    @FormUrlEncoded
+//    @FormUrlEncoded
+//    @POST("api/v1/auth?terminal="+terminal)
+//    Call<LoginBean> getLoginString(@FieldMap HashMap<String,String> Map);
     @POST("api/v1/auth?terminal="+terminal)
-    Call<LoginBean> getLoginString(@FieldMap HashMap<String,String> Map);
+    Call<Object> getLoginString(@Body HashMap<String ,String > map);
     @POST("api/v1/users")
     Call<LoginBean> reginst(@Body String user);
 

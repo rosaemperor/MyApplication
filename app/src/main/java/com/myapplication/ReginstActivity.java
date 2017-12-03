@@ -13,7 +13,12 @@ import com.myapplication.bean.LoginBean;
 import com.myapplication.bean.ReginstMessageBean;
 import com.myapplication.databinding.LayoutReginstActivityBinding;
 import com.myapplication.http.RetrofitUtils;
+import com.myapplication.utils.BannerImageLoader;
 import com.myapplication.viewModel.ReginstViewModel;
+import com.youth.banner.BannerConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +38,14 @@ public class ReginstActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(ReginstActivity.this,R.layout.layout_reginst_activity);
         binding.setEvent(new ReginstViewModel(ReginstActivity.this));
+        binding.banner.setImageLoader(new BannerImageLoader());
+        List<String> iamges=new ArrayList<>();
+        iamges.add("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
+        iamges.add("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
+        iamges.add("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
+        iamges.add("https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=c226cae3d933c895b2739029b07a1895/d52a2834349b033b96b741ae15ce36d3d539bd83.jpg");
+        binding.banner.setImages(iamges);
+        binding.banner.start();
 //        message=new ReginstMessageBean();
 //        binding.setMessage(message);
     }

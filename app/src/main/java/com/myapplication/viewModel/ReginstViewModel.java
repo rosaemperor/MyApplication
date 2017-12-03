@@ -71,20 +71,14 @@ public class ReginstViewModel implements View.OnClickListener{
         HashMap<String,String> map=new HashMap<>();
         map.put("username","15936562980");
         map.put("password","333333");
-        RetrofitUtils.getInstance().getHelp().getLoginString(map).enqueue(new Callback<LoginBean>(){
+        RetrofitUtils.getInstance().getHelp().getLoginString(map).enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
-                if(response.code()==200){
-                    Toast.makeText(context,response.body().getOperate_mode()+"200"+""+response.body().getToken(),Toast
-                            .LENGTH_LONG)
-                            .show();
-                }
+            public void onResponse(Call<Object> call, Response<Object> response) {
+
             }
 
             @Override
-            public void onFailure(Call<LoginBean> call, Throwable t) {
-                Toast.makeText(context,t.toString(),Toast.LENGTH_LONG).show();
-                Log.d("AA",""+t.toString());
+            public void onFailure(Call<Object> call, Throwable t) {
 
             }
         });
