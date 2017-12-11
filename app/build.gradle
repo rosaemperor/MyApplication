@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.myapplication"
         minSdkVersion 15
@@ -30,20 +30,6 @@ android {
             dataBinding{
                 enabled=true
             }
-        }
-    }
-    productFlavors {
-        MissouriRiver {}
-        wandoujia {}
-        baidu {}
-        qq {}
-        lenovo {}
-        shouji {}
-        anzhi {}
-        xiaomi {}
-        huawei {}
-        productFlavors.all { flavor ->
-            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         }
     }
 }
