@@ -28,7 +28,6 @@ class KotlinActivity : AutoLayoutActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.acitivity_kotlin_layout)
-       var activity: RXAndroidTestActivity = RXAndroidTestActivity()
         binding.titleName.setText("Kotlin的textView")
         binding.background.layoutParams = FrameLayout.LayoutParams(binding.background.width,binding.background.height+ScreenUtils.getStatusBarHeight(this@KotlinActivity))
         binding.background.isDrawingCacheEnabled = true
@@ -36,11 +35,7 @@ class KotlinActivity : AutoLayoutActivity(){
 //        bitmap = bitmap.copy(bitmap.config,true)
 //        binding.background.isDrawingCacheEnabled = false
 //        Log.d("","${bitmap.height}")
-        var thread : Thread = Thread(Runnable {
-            var intent = Intent()
-            intent.setClass(this@)
-        })
-        Log.d("TAG",""+ScreenUtils.getStatusBarHeight(this@KotlinActivity))
+        Log.d("TAG","www.baidu.com")
         list= ArrayList()
         var loginBean  = LoginBean()
         list.add(loginBean)
