@@ -62,6 +62,11 @@ dependencies {
     compile 'com.xiaosu:pullLayout:3.0.4'
 
 
+    //facebook
+//    compile  'com.facebook.android:account-kit-sdk:4.+'
+////    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+//    compile 'com.google.android.gms:play-services-analytics:11.6.0'
+
     compile(name: 'crawlerlib-release', ext: 'aar')
     //融360抓取SDK支持
     compile 'com.squareup.okhttp:okhttp:2.5.0'
@@ -91,4 +96,5 @@ repositories {
         dirs 'libs'
     }
 
+    google()
 }

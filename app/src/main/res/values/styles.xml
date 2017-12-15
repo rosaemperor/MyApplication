@@ -13,6 +13,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="splashStyle" parent="android:Theme">
+        <item name="android:windowBackground">@mipmap/ic_launcher</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
@@ -35,5 +38,11 @@
         <item name="android:indicatorLeft">0dp</item>
 
 
+    </style>
+    <style name="AppSplash" parent="Theme.AppCompat">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 </resources>

@@ -19,6 +19,7 @@ import com.myapplication.adapter.ListAdapter
 import com.myapplication.bean.LoginBean
 import com.myapplication.command.LoginCommand
 import com.myapplication.http.RetrofitUtils
+import com.myapplication.utils.MylayoutManager
 import com.myapplication.utils.NdkUtils
 import com.myapplication.utils.NdkUtilsForKotlin
 
@@ -33,7 +34,7 @@ import java.util.*
  * Created by Adminidtrator on 2017/10/23.
  */
 
-class LoginViewModel(private var activity: Context?, id: Long) {
+class LoginViewModel(var activity: Context?, id: Long) {
 
     internal var loginBean: LoginBean? = null
     //model
@@ -51,7 +52,7 @@ class LoginViewModel(private var activity: Context?, id: Long) {
     val bean = ObservableField<LoginBean>()
     val adapter = ObservableField<ListAdapter>()
 
-    val manager = ObservableField<RecyclerView.LayoutManager>()
+    val manager = ObservableField<MylayoutManager>()
     val iamgeAdapter = ObservableField<ImageListAdapter>()
 
 
@@ -79,13 +80,13 @@ class LoginViewModel(private var activity: Context?, id: Long) {
     var  call = RetrofitUtils.getInstance().help.getLoginString("15936562980","333333")
         call.enqueue(object :Callback<LoginBean>{
             override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
-               if(null !=loginBean!!.token){
+               if(null !=loginBean?.token){
                    Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
                }
             }
 
             override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
             }
 
         })
@@ -95,7 +96,8 @@ class LoginViewModel(private var activity: Context?, id: Long) {
         loginBean = LoginBean()
         loginBean!!.token = NdkUtils.helloWorld()
         viewStyle.showListView.set(View.GONE)
-        manager.set(LinearLayoutManager(activity))
+        manager.set(MylayoutManager())
+//        manager.set(LinearLayoutManager(activity))
 //        iamgeAdapter.set(ImageListAdapter(activity))
         viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
         if (BuildConfig.DEBUG) {
