@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -32,20 +32,6 @@ android {
             }
         }
     }
-//    productFlavors {
-//        MissouriRiver {}
-//        wandoujia {}
-//        baidu {}
-//        qq {}
-//        lenovo {}
-//        shouji {}
-//        anzhi {}
-//        xiaomi {}
-//        huawei {}
-//        productFlavors.all { flavor ->
-//            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-//        }
-//    }
 }
 kapt {
     generateStubs = true
@@ -60,6 +46,8 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.zhy:percent-support-extends:1.1.1'
     compile 'com.zhy:autolayout:1.4.5'
+    testCompile 'junit:junit:4.12'
+    kapt "com.android.databinding:compiler:2.3.0"
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
@@ -73,6 +61,11 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:3.2.6'
     compile 'com.xiaosu:pullLayout:3.0.4'
 
+
+    //facebook
+//    compile  'com.facebook.android:account-kit-sdk:4.+'
+////    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+//    compile 'com.google.android.gms:play-services-analytics:11.6.0'
 
     compile(name: 'crawlerlib-release', ext: 'aar')
     //融360抓取SDK支持
@@ -103,4 +96,5 @@ repositories {
         dirs 'libs'
     }
 
+    google()
 }

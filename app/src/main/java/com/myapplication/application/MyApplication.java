@@ -34,7 +34,7 @@ public class MyApplication extends Application {
         super.onCreate();
         AutoLayoutConifg.getInstance().useDeviceSize();
         initFresco();
-        installLeakCanary();
+//        installLeakCanary();
         checkPermissionApplication();
     }
     private void installLeakCanary() {

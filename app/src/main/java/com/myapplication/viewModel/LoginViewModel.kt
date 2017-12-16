@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 
 import com.myapplication.BuildConfig
 import com.myapplication.LoginActivity
@@ -18,22 +19,22 @@ import com.myapplication.adapter.ListAdapter
 import com.myapplication.bean.LoginBean
 import com.myapplication.command.LoginCommand
 import com.myapplication.http.RetrofitUtils
+import com.myapplication.utils.MylayoutManager
 import com.myapplication.utils.NdkUtils
 import com.myapplication.utils.NdkUtilsForKotlin
-
-import java.util.ArrayList
 
 import io.reactivex.Observable
 import io.reactivex.Observer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 /**
  * Created by Adminidtrator on 2017/10/23.
  */
 
-class LoginViewModel(private var activity: Context?, id: Long) {
+class LoginViewModel(var activity: Context?, id: Long) {
 
     internal var loginBean: LoginBean? = null
     //model
@@ -51,7 +52,7 @@ class LoginViewModel(private var activity: Context?, id: Long) {
     val bean = ObservableField<LoginBean>()
     val adapter = ObservableField<ListAdapter>()
 
-    val manager = ObservableField<RecyclerView.LayoutManager>()
+    val manager = ObservableField<MylayoutManager>()
     val iamgeAdapter = ObservableField<ImageListAdapter>()
 
 
@@ -72,13 +73,31 @@ class LoginViewModel(private var activity: Context?, id: Long) {
 
     init {
         loadData(id)
+        checkVersion()
+    }
+
+    private fun checkVersion() {
+    var  call = RetrofitUtils.getInstance().help.getLoginString("15936562980","333333")
+        call.enqueue(object :Callback<LoginBean>{
+            override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
+               if(null !=loginBean?.token){
+                   Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
+               }
+            }
+
+            override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
+               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
+            }
+
+        })
     }
 
     private fun loadData(id: Long) {
         loginBean = LoginBean()
         loginBean!!.token = NdkUtils.helloWorld()
         viewStyle.showListView.set(View.GONE)
-        manager.set(LinearLayoutManager(activity))
+        manager.set(MylayoutManager())
+//        manager.set(LinearLayoutManager(activity))
 //        iamgeAdapter.set(ImageListAdapter(activity))
         viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
         if (BuildConfig.DEBUG) {
