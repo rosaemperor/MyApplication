@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.myapplication"
         minSdkVersion 15
@@ -32,20 +32,20 @@ android {
             }
         }
     }
-    productFlavors {
-        MissouriRiver {}
-        wandoujia {}
-        baidu {}
-        qq {}
-        lenovo {}
-        shouji {}
-        anzhi {}
-        xiaomi {}
-        huawei {}
-        productFlavors.all { flavor ->
-            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-        }
-    }
+//    productFlavors {
+//        MissouriRiver {}
+//        wandoujia {}
+//        baidu {}
+//        qq {}
+//        lenovo {}
+//        shouji {}
+//        anzhi {}
+//        xiaomi {}
+//        huawei {}
+//        productFlavors.all { flavor ->
+//            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+//        }
+//    }
 }
 kapt {
     generateStubs = true
@@ -60,8 +60,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.zhy:percent-support-extends:1.1.1'
     compile 'com.zhy:autolayout:1.4.5'
-    testCompile 'junit:junit:4.12'
-    kapt "com.android.databinding:compiler:2.3.0"
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
