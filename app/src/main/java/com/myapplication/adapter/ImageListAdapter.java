@@ -45,7 +45,7 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         binding = DataBindingUtil.bind(holder.itemView.getRootView());
-        binding.setViewModel(new ImageItemViewModel(context,position));
+        binding.setViewModel(new ImageItemViewModel(this,position));
 //        Log.d("AAA",""+width);
     }
 
