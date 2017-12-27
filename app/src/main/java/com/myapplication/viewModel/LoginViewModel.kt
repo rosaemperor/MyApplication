@@ -66,7 +66,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
     inner class ViewStyle {
         val isRefreshing = ObservableBoolean()
         val progressRefreshing = ObservableBoolean()
-        val showListView = ObservableInt()
+        val showListView = ObservableInt(View.GONE)
         val backgroundClolr = ObservableInt()
     }
 
@@ -78,18 +78,18 @@ class LoginViewModel(var activity: Context?, id: Long) {
 
     private fun checkVersion() {
     var  call = RetrofitUtils.getInstance().help.getLoginString("15936562980","333333")
-        call.enqueue(object :Callback<LoginBean>{
-            override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
-               if(null !=loginBean?.token){
-                   Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
-               }
-            }
-
-            override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
-               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
-            }
-
-        })
+//        call.enqueue(object :Callback<LoginBean>{
+//            override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
+//               if(null !=loginBean?.token){
+//                   Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
+//               }
+//            }
+//
+//            override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
+//               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
+//            }
+//
+//        })
     }
 
     private fun loadData(id: Long) {
@@ -108,9 +108,6 @@ class LoginViewModel(var activity: Context?, id: Long) {
         var list = ArrayList<LoginBean>()
         for (i in 0..4) {
             list.add(loginBean!!)
-        }
-        for(j  in 15 downTo 10){
-            Log.d("Kotlin",""+j)
         }
         title.set("title")
         adapter.set(ListAdapter(activity, list))

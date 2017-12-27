@@ -54,6 +54,7 @@ public class ListAdapter extends BaseAdapter{
         TextView textView;
             if(convertView == null){
                 convertView = LayoutInflater.from(context).inflate(R.layout.item_iamge_list,null);
+                // databinding 绑定viewmodel
             textView= (TextView) convertView.findViewById(R.id.text2);
                 convertView.setTag(textView);
             }else{

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ import com.facebook.common.logging.LoggingDelegate;
 import com.myapplication.BuildConfig;
 import com.myapplication.R;
 import com.myapplication.activity.KotlinActivity;
+import com.myapplication.activity.LamadaActivity;
 import com.myapplication.base.BaseCommand;
 import com.myapplication.bean.Contact;
 import com.myapplication.utils.GetContactsUtil;
@@ -42,7 +44,9 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
         switch (v.getId()){
             case R.id.title:
                 Toast.makeText(v.getContext(),"title",Toast.LENGTH_LONG).show();
-                viewModel.changeString("这里是设置来的");
+                Intent intent= new Intent();
+                intent.setClass(v.getContext(), LamadaActivity.class);
+                v.getContext().startActivity(intent);
                 break;
         }
     }

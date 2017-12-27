@@ -40,10 +40,10 @@ public class LoginActivity extends AppCompatActivity {
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
             Log.d("LoginActivity","CREAM");
         }else {
+            //请求一个或多个权限，requestCode是他的请求value
             requestPermissions(new String[]{Manifest.permission.CAMERA},202);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Log.d("TAG",""+Build.VERSION.SDK_INT);
             checkSelfPermission(Manifest.permission.READ_PHONE_STATE);
         }
     }
@@ -57,6 +57,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 请求权限的结果返回方法回调
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

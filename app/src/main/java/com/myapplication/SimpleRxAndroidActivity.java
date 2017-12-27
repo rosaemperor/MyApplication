@@ -1,5 +1,6 @@
 package com.myapplication;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.myapplication.adapter.TabLayoutPagerAdapter;
 import com.myapplication.databinding.RxSimpleTestBinding;
 import com.myapplication.fragment.MyFragment;
+import com.myapplication.viewModel.ChildViewModel;
 import com.myapplication.viewModel.RxAndroidSimpleViewModel;
 
 import java.util.ArrayList;
@@ -28,7 +30,9 @@ public class SimpleRxAndroidActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.rx_simple_test);
-        viewModel= new RxAndroidSimpleViewModel(this,binding);
+        ChildViewModel childViewModel = ViewModelProviders.of(this).get(ChildViewModel.class);
+//        viewModel= ViewModelProviders.of(this).get(RxAndroidSimpleViewModel.class);
+//        viewModel= new RxAndroidSimpleViewModel(this,binding);
         List<Fragment> list = new ArrayList<>();
         list.add(new MyFragment());
         list.add(new MyFragment());

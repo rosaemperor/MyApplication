@@ -49,9 +49,10 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".activity.KotlinActivity"
                   android:theme="@style/AppSplash"
-            >
+            />
+            <activity android:name=".activity.LamadaActivity"/>
 
-        </activity>
+
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
             android:value="GlideModule"/>
     </application>

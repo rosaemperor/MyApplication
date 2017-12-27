@@ -1,5 +1,6 @@
 package com.myapplication.viewModel;
 
+import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 
 import android.view.View;
@@ -18,7 +19,7 @@ import io.reactivex.disposables.Disposable;
  * Created by Adminidtrator on 2017/9/3.
  */
 
-public class RxAndroidSimpleViewModel implements View.OnClickListener{
+public class RxAndroidSimpleViewModel extends ViewModel implements View.OnClickListener{
     private Context context;
     private RxSimpleTestBinding binding;
 

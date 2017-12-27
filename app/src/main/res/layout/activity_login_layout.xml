@@ -10,6 +10,8 @@
 
 <LinearLayout
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -43,6 +45,11 @@
         android:gravity="center"
         android:text='@{"token:"+viewModel.bean.get().token}'
         />
+    <EditText
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:text='@={viewModel.bean.get().token}'
+        android:layout_height="wrap_content"/>
     <ListView
         android:layout_width="match_parent"
     android:id="@+id/list_view"
