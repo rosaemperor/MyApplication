@@ -52,7 +52,8 @@ public class RetrofitUtils {
                 .build();
 
         retrofit=new Retrofit.Builder()
-                .baseUrl( "http://api.ih2ome.cn/")
+//                .baseUrl( "http://api.ih2ome.cn/")
+                .baseUrl("http://10.0.6.47:9090/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

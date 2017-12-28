@@ -20,12 +20,17 @@ import com.myapplication.activity.KotlinActivity;
 import com.myapplication.activity.LamadaActivity;
 import com.myapplication.base.BaseCommand;
 import com.myapplication.bean.Contact;
+import com.myapplication.http.RetrofitUtils;
 import com.myapplication.utils.GetContactsUtil;
 import com.myapplication.utils.GetContactsUtils;
 import com.myapplication.viewModel.LoginViewModel;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * 在command中你只能去写View的路由事件，Context的上下文对象可以通过当前的View的去获得
@@ -47,6 +52,18 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
                 Intent intent= new Intent();
                 intent.setClass(v.getContext(), LamadaActivity.class);
                 v.getContext().startActivity(intent);
+                Call call=RetrofitUtils.getInstance().getHelp().getMessage();
+               call.enqueue(new Callback<Object>() {
+                   @Override
+                   public void onResponse(Call<Object> call, Response<Object> response) {
+
+                   }
+
+                   @Override
+                   public void onFailure(Call<Object> call, Throwable t) {
+
+                   }
+               });
                 break;
         }
     }

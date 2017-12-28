@@ -23,6 +23,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("scheme", r.URL.Scheme)
 	fmt.Println(r.Form["url_long"])
 	fmt.Println(r.Body)
+	log.Print(r.URL.Path)
 	var serversLice ServersLice
 	//str := `{"servers":[{"serverName":"Shanghai_VPN","serverIP":"127.0.0.1"},{"serverName":"Beijing_VPN","serverIP":"127.0.0.2"}]}`
 	for k, v := range r.Form {
@@ -32,6 +33,8 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 	  urllong := r.Form.Get("url_long")
 	if strings.EqualFold("",urllong) {
 		//fmt.Fprintf(w, "请输入url_long，谢谢")
+		server := Server{ServerIP:"16271627",ServerName:"sdfkjsdhfjah"}
+		fmt.Print(server.ServerName)
 		serversLice.Servers=append(serversLice.Servers,Server{ServerName:"本地服务器",ServerIP:"127.0.0.1"})
 		serversLice.Servers=append(serversLice.Servers,Server{ServerName:"上海服务器",ServerIP:"127.0.0.3"})
 		stringJson,error:= json.Marshal(serversLice)

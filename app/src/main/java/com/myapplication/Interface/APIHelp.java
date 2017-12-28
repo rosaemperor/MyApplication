@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -27,6 +28,8 @@ public interface APIHelp {
     Call<Object> getLoginString(@Body HashMap<String ,String > map);
     @POST("api/v1/users")
     Call<LoginBean> reginst(@Body String user);
+    @GET("hello")
+    Call<Object> getMessage();
 
 
 }
