@@ -17,12 +17,12 @@ import org.greenrobot.eventbus.EventBus
  */
 
 class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
-    private var binding: LayoutEventbusSendBinding? = null
+    lateinit var binding: LayoutEventbusSendBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@EventBusSendActivity, R.layout.layout_eventbus_send)
-        binding!!.event = this
-        binding!!.event
+        binding.event = this
+        binding.event
         for (i in 0..9) {
             when (i) {
                 1 -> {
@@ -42,7 +42,7 @@ class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.event_send -> {
-                EventBus.getDefault().post(MessageEvent(binding!!.eventEditText.text.toString()))
+                EventBus.getDefault().post(MessageEvent(binding.eventEditText.text.toString()))
                 finish()
             }
             else -> {

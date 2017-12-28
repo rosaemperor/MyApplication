@@ -1,8 +1,16 @@
 package com.myapplication.viewModel;
 
 import android.content.Context;
+import android.view.View;
 
+import com.myapplication.adapter.ImageListAdapter;
+import com.myapplication.base.BaseCommand;
+import com.myapplication.command.ImageCommand;
+import com.myapplication.command.ImageCommand2;
 import com.myapplication.command.ImageItemCommand;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by administrator on 2017/11/22.
@@ -10,10 +18,11 @@ import com.myapplication.command.ImageItemCommand;
 
 public class ImageItemViewModel {
     public ImageItemCommand command;
-    private Context context;
-    private int position;
+    private ImageListAdapter context;
+    public List<BaseCommand> itemClick =new ArrayList<>();
+    public int position;
 
-    public ImageItemViewModel(Context context, int position) {
+    public ImageItemViewModel(ImageListAdapter context, int position) {
         this.context=context;
         this.position=position;
         init();
@@ -21,5 +30,19 @@ public class ImageItemViewModel {
 
     private void init() {
         command = new ImageItemCommand(this,position);
+        for(int i= 0 ;i<context.getItemCount();i++){
+            if(i%2==0){
+                itemClick.add(new ImageCommand2());
+            }else {
+                itemClick.add(new ImageCommand());
+            }
+
+        }
+
+
+    }
+
+    public void onItemClick(View view){
+        itemClick.get(position).onClick(view);
     }
 }

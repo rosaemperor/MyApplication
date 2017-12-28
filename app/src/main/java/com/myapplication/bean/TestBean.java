@@ -19,6 +19,9 @@ public class TestBean extends BaseObservable{
     }
 
     public void setText(String text) {
+    if(text==null || text.equals("")){
+
+    }
         this.text = text;
         notifyPropertyChanged(BR.text);
     }

@@ -22,6 +22,5 @@ class RXAndroidTestActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.rx_android_test)
             viewModel =RxAndroidTestViewModel(this,binding!! )
 
-
     }
 }

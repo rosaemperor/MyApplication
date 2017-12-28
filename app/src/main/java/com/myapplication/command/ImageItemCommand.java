@@ -3,13 +3,14 @@ package com.myapplication.command;
 import android.view.View;
 import android.widget.Toast;
 
+import com.myapplication.base.BaseCommand;
 import com.myapplication.viewModel.ImageItemViewModel;
 
 /**
  * Created by administrator on 2017/11/22.
  */
 
-public class ImageItemCommand {
+public class ImageItemCommand extends BaseCommand{
     private ImageItemViewModel viewModel;
     private int position;
     public ImageItemCommand(ImageItemViewModel imageItemViewModel, int position) {
@@ -19,5 +20,10 @@ public class ImageItemCommand {
     //recycleView的item点击事件
     public void itemClickListener(View view){
         Toast.makeText(view.getContext(),""+position,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

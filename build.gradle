@@ -22,10 +22,12 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
         maven {
             url "http://117.78.40.97:9003/nexus/content/repositories/releases/"
         }
         maven { url "https://jitpack.io" }
+
     }
 }
 

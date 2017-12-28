@@ -18,7 +18,6 @@
         android:id="@+id/imageRecycleView"
         android:layout_width="300dp"
         android:scrollbars="none"
-        android:visibility="gone"
         android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="100dp"

@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.myapplication.R;
+import com.myapplication.base.BaseCommand;
 import com.myapplication.databinding.ItemIamgeListBinding;
 import com.myapplication.viewModel.ImageItemViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/10.
@@ -19,6 +23,8 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
     private Context context;
     private int itemWidth=100;
     private ObservableInt width= new ObservableInt(itemWidth);
+
+    private ItemIamgeListBinding binding;
     public ImageListAdapter(Context context) {
         this.context = context;
     }
@@ -38,8 +44,8 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ItemIamgeListBinding binding = DataBindingUtil.bind(holder.itemView.getRootView());
-        binding.setViewModel(new ImageItemViewModel(context,position));
+        binding = DataBindingUtil.bind(holder.itemView.getRootView());
+        binding.setViewModel(new ImageItemViewModel(this,position));
 //        Log.d("AAA",""+width);
     }
 
