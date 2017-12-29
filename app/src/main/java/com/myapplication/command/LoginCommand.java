@@ -23,6 +23,7 @@ import com.myapplication.bean.Contact;
 import com.myapplication.http.RetrofitUtils;
 import com.myapplication.utils.GetContactsUtil;
 import com.myapplication.utils.GetContactsUtils;
+import com.myapplication.view.LoadingDialog;
 import com.myapplication.viewModel.LoginViewModel;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
@@ -49,21 +50,23 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
         switch (v.getId()){
             case R.id.title:
                 Toast.makeText(v.getContext(),"title",Toast.LENGTH_LONG).show();
+//                LoadingDialog dialog = new LoadingDialog(v.getContext());
+//                dialog.show();
                 Intent intent= new Intent();
                 intent.setClass(v.getContext(), LamadaActivity.class);
                 v.getContext().startActivity(intent);
-                Call call=RetrofitUtils.getInstance().getHelp().getMessage();
-               call.enqueue(new Callback<Object>() {
-                   @Override
-                   public void onResponse(Call<Object> call, Response<Object> response) {
-
-                   }
-
-                   @Override
-                   public void onFailure(Call<Object> call, Throwable t) {
-
-                   }
-               });
+//                Call call=RetrofitUtils.getInstance().getHelp().getMessage();
+//               call.enqueue(new Callback<Object>() {
+//                   @Override
+//                   public void onResponse(Call<Object> call, Response<Object> response) {
+//
+//                   }
+//
+//                   @Override
+//                   public void onFailure(Call<Object> call, Throwable t) {
+//
+//                   }
+//               });
                 break;
         }
     }

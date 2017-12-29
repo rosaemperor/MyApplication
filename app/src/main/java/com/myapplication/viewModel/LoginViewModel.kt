@@ -98,7 +98,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
         viewStyle.showListView.set(View.GONE)
         manager.set(MylayoutManager())
 //        manager.set(LinearLayoutManager(activity))
-//        iamgeAdapter.set(ImageListAdapter(activity))
+        iamgeAdapter.set(ImageListAdapter(activity))
         viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
         if (BuildConfig.DEBUG) {
             loginBean!!.token = "debug"
@@ -112,6 +112,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
         title.set("title")
         adapter.set(ListAdapter(activity, list))
         bean.set(loginBean)
+
     }
 
     fun changeString(tpUser: String) {

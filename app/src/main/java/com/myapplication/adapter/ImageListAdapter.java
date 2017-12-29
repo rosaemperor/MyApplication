@@ -2,8 +2,10 @@ package com.myapplication.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
 import android.databinding.ObservableInt;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -21,12 +23,16 @@ import java.util.List;
 
 public class ImageListAdapter  extends RecyclerView.Adapter{
     private Context context;
+    private ItemIamgeListBinding binding;
     private int itemWidth=100;
     private ObservableInt width= new ObservableInt(itemWidth);
-
-    private ItemIamgeListBinding binding;
+    private List<String> list= new ArrayList<>();
+    private ObservableArrayList<String> listString = new ObservableArrayList<>();
     public ImageListAdapter(Context context) {
         this.context = context;
+        for(int i=0;i<20;i++){
+            listString.add(""+i);
+        }
     }
 
     public int getItemWidth() {
@@ -38,19 +44,19 @@ public class ImageListAdapter  extends RecyclerView.Adapter{
         RecyclerView.ViewHolder viewHolder = new RecyclerView.ViewHolder(LayoutInflater.from(
                 context).inflate(R.layout.item_iamge_list, parent,
                 false)) {};
-        itemWidth=viewHolder.itemView.getWidth();
+
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        binding = DataBindingUtil.bind(holder.itemView.getRootView());
-        binding.setViewModel(new ImageItemViewModel(this,position));
-//        Log.d("AAA",""+width);
+         binding = DataBindingUtil.bind(holder.itemView.getRootView());
+//        binding.setViewModel(new ImageItemViewModel(this,position,listString.get(position)));
+        Log.d("AAA",""+position);
     }
 
     @Override
     public int getItemCount() {
-        return 8;
+        return listString.size();
     }
 }

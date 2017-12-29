@@ -27,7 +27,7 @@
         <meta-data android:name="design_height" android:value="1280"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.LamadaActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -50,7 +50,7 @@
         <activity android:name=".activity.KotlinActivity"
                   android:theme="@style/AppSplash"
             />
-            <activity android:name=".activity.LamadaActivity"/>
+            <!--<activity android:name=".activity."/>-->
 
 
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"

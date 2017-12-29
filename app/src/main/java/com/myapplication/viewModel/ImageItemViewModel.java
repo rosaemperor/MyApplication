@@ -1,6 +1,7 @@
 package com.myapplication.viewModel;
 
 import android.content.Context;
+import android.databinding.ObservableField;
 import android.view.View;
 
 import com.myapplication.adapter.ImageListAdapter;
@@ -20,11 +21,13 @@ public class ImageItemViewModel {
     public ImageItemCommand command;
     private ImageListAdapter context;
     public List<BaseCommand> itemClick =new ArrayList<>();
+    public ObservableField<String> test=new ObservableField<>();
     public int position;
 
-    public ImageItemViewModel(ImageListAdapter context, int position) {
+    public ImageItemViewModel(ImageListAdapter context, int position,String text) {
         this.context=context;
         this.position=position;
+        test.set(text);
         init();
     }
 

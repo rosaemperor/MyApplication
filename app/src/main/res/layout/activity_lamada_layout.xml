@@ -6,11 +6,12 @@
             type="com.myapplication.viewModel.LamadaViewModel"/>
     </data>
 
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:padding="10dp"
+    android:orientation="vertical"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
@@ -22,5 +23,9 @@
         android:onClick="@{()-> viewModel.click()}"
         android:background="@drawable/backlinecolor"
         android:layout_height="wrap_content"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-</android.support.constraint.ConstraintLayout></layout>
+</LinearLayout></layout>

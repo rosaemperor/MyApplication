@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.myapplication.application.*;
 import com.myapplication.databinding.ActivityLoginLayoutBinding;
+import com.myapplication.view.LoadingDialog;
 import com.myapplication.viewModel.LoginViewModel;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String EXTRA_KEY_NEWS_ID = "key_news_id";
     private RefWatcher refWatcher;
     private LoginViewModel viewModel;
+    private LoadingDialog dialog;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         long id = getIntent().getLongExtra(EXTRA_KEY_NEWS_ID, -1);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login_layout);
         viewModel = new LoginViewModel(this,id);
+        dialog = new LoadingDialog(this);
         binding.setViewModel(viewModel);
-
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
             Log.d("LoginActivity","CREAM");
         }else {

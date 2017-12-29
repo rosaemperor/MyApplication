@@ -1,5 +1,7 @@
 package com.myapplication.viewModel;
 
+import android.databinding.ObservableField;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -8,6 +10,7 @@ import android.widget.Toast;
  */
 
 public class LamadaViewModel {
+    private ObservableField<RecyclerView.LayoutManager> layoutManager = new ObservableField<>();
     public void click(int number){
         Log.d("TAG",""+number);
     }
@@ -17,5 +20,8 @@ public class LamadaViewModel {
     public boolean longClick(){
         Log.d("TAG","长安");
         return true;
+    }
+    public LamadaViewModel(){
+
     }
 }

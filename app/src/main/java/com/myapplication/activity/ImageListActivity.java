@@ -31,7 +31,6 @@ public class ImageListActivity extends AutoLayoutActivity implements View.OnClic
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_list);
         binding.setEvent(this);
         manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         binding.imageRecycleView.setLayoutManager(manager);
         adapter = new ImageListAdapter(this);
         binding.imageRecycleView.setAdapter(adapter);

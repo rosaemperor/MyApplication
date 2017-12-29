@@ -6,6 +6,10 @@
     <variable
         name="viewModel"
         type="com.myapplication.viewModel.LoginViewModel"/>
+    <variable
+        name="loadingDirlog"
+        type="com.myapplication.view.LoadingDialog" />
+
 </data>
 
 <LinearLayout
@@ -18,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
+
         android:background="@{viewModel.viewStyle.backgroundClolr}"
         android:gravity="center"
         android:onClick="@{viewModel.command.login}"
@@ -29,6 +34,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:id="@+id/title"
+
         android:onClick="@{viewModel.command}"
         android:layout_marginTop="20dp"
         android:background="@color/c_AFAFAF"
@@ -38,7 +44,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:padding="20dp"
         android:layout_marginTop="20dp"
         android:background="@color/c_AFAFAF"
@@ -48,6 +53,7 @@
     <EditText
         android:layout_width="match_parent"
         android:padding="15dp"
+        android:visibility="gone"
         android:text='@={viewModel.bean.get().token}'
         android:layout_height="wrap_content"/>
     <ListView
@@ -61,7 +67,7 @@
         android:layout_width="match_parent"
         app:layoutManager="@{viewModel.manager}"
         android:id="@+id/imageRecycleView"
-        app:adapter="@{viewModel.iamgeAdapter}"
+        app:adapter='@{viewModel.iamgeAdapter}'
         android:layout_height="match_parent"/>
 
 
