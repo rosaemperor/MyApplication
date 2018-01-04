@@ -12,6 +12,7 @@ import com.myapplication.R;
 import com.myapplication.adapter.TaoAdapter;
 import com.myapplication.databinding.ActivityLamadaLayoutBinding;
 import com.myapplication.viewModel.LamadaViewModel;
+import com.myapplication.viewModel.TaoChildViewModel;
 import com.myapplication.viewModel.TaoViewModel;
 
 import java.util.ArrayList;
@@ -28,9 +29,14 @@ public class LamadaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this, R.layout.activity_lamada_layout);
         binding.setViewModel(new LamadaViewModel());
+
         List<TaoViewModel> list = new ArrayList<>();
         for(int i=0;i<15;i++){
-            list.add(new TaoViewModel());
+            List<TaoChildViewModel> childViewModels = new ArrayList<>();
+            for(int j=0;j<15;j++){
+                childViewModels.add(new TaoChildViewModel());
+            }
+            list.add(new TaoViewModel(this,childViewModels));
         }
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
         binding.recycleView.setAdapter(new TaoAdapter(LamadaActivity.this,list));
