@@ -26,7 +26,7 @@ public class DoubleRecycleViewActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=DataBindingUtil.setContentView(DoubleRecycleViewActivity.this,R.layout.layout_double_recycleview);
-       LinearLayoutManager layoutManager= new LinearLayoutManager(DoubleRecycleViewActivity.this);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(DoubleRecycleViewActivity.this);
         binding.recycleFarther.setLayoutManager(layoutManager);
 
         for(int i = 'A'; i < 'G'; i++){

@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import com.myapplication.R;
 import com.myapplication.databinding.ItemIamgeListBinding;
 import com.myapplication.databinding.TaoLayoutBinding;
+import com.myapplication.viewModel.TaoViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,12 +20,13 @@ import java.util.List;
  */
 
 public class TaoAdapter extends RecyclerView.Adapter{
-    ObservableField<List<String>> list;
+    List<TaoViewModel> viewModels;
     Context context;
 
-    public TaoAdapter(Context context, ObservableField<List<String>> list){
+
+    public TaoAdapter(Context context, List<TaoViewModel> list){
         this.context= context;
-        this.list= list;
+        this.viewModels= list;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,10 +37,15 @@ public class TaoAdapter extends RecyclerView.Adapter{
         return viewHolder;
     }
 
+    /**
+     * 不要在这里初始化数据，切记切记
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
          TaoLayoutBinding binding = DataBindingUtil.bind(holder.itemView.getRootView());
-
+         binding.setViewModel(viewModels.get(position));
     }
 
     @Override
