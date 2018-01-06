@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"flag"
 	"runtime"
-	_ "github.com/ziutek/mymysql/godrv"
+
 )
 type Server struct {
 	ServerName string `json:"serverName"`
@@ -50,6 +50,7 @@ func sayhelloName(w http.ResponseWriter, r *http.Request) {
 		fmt.Print(server.ServerName)
 		serversLice.Servers=append(serversLice.Servers,Server{ServerName:"本地服务器",ServerIP:"127.0.0.1"})
 		serversLice.Servers=append(serversLice.Servers,Server{ServerName:"上海服务器",ServerIP:"127.0.0.3"})
+		serversLice.Servers=append(serversLice.Servers,server)
 		stringJson,error:= json.Marshal(serversLice)
 		if error == nil{
 			fmt.Fprintf(w, string(stringJson))
@@ -70,8 +71,7 @@ func init()  {
 }
 func main() {
 	fmt.Println("hello.GO")
-	http.HandleFunc("/hello",sayhelloName)
-
+	http.HandleFunc("/",sayhelloName)
 	err := http.ListenAndServe(":9090",nil)
 	if err !=nil {
 		log.Fatal("ListenAndServer:",err)

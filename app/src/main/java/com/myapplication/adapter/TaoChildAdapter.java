@@ -4,7 +4,9 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.myapplication.R;
 import com.myapplication.databinding.TaoLayout2Binding;
@@ -39,7 +41,6 @@ public class TaoChildAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         TaoLayout2Binding binding=DataBindingUtil.bind(holder.itemView.getRootView());
         binding.setViewmodel(viewModels.get(position));
-
     }
 
     @Override
