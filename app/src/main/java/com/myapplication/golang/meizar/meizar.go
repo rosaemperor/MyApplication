@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/derekparker/delve/pkg/terminal"
 	"io"
 	"io/ioutil"
 	"net/http"
