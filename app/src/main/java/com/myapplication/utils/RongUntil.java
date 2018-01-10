@@ -10,7 +10,7 @@ import com.rong360.app.crawler.CrawlerManager;
 import com.rong360.app.crawler.CrawlerStatus;
 
 import java.util.HashMap;
-
+import static com.myapplication.utils.StringUtils.getName;
 /**
  * Created by administrator on 2017/11/21.
  */

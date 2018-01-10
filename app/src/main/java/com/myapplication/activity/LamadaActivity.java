@@ -12,9 +12,11 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.myapplication.R;
+import com.myapplication.adapter.ForecastsAdapter;
 import com.myapplication.adapter.TaoAdapter;
 import com.myapplication.databinding.ActivityLamadaLayoutBinding;
 import com.myapplication.viewModel.LamadaViewModel;
@@ -48,18 +50,20 @@ public class LamadaActivity extends AppCompatActivity{
         }
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
         binding.recycleView.setAdapter(new TaoAdapter(LamadaActivity.this,list));
-
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        TaoChildViewModel model = new TaoChildViewModel();
-//        model.setContent(new ObservableField<String>("王老弟测试"));
-//        ObservableInt age = new ObservableInt(34234);
-//        Gson gson= new Gson();
-//        JsonParser jsonParser = new JsonParser();
-//        String json = "";
-//        Log.d("TAG",""+jsonParser.parse(gson.toJson(model)));
-        return super.onKeyDown(keyCode, event);
+        TaoChildViewModel model = new TaoChildViewModel();
+        model.setContent(new ObservableField<String>("王老弟测试"));
+        ObservableInt age = new ObservableInt(34234);
+        Gson gson= new Gson();
+        JsonParser jsonParser = new JsonParser();
+        String json = "";
+        Log.d("TAG",""+jsonParser.parse(gson.toJson(model)));
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson myadapter=gsonBuilder.registerTypeAdapter(Object.class,new ForecastsAdapter()).create();
+        myadapter.fromJson(gson.toJson(model),TaoChildViewModel.class);
+        return true;
     }
 }
