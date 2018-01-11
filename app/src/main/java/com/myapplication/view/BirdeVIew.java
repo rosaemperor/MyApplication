@@ -16,6 +16,11 @@ import com.myapplication.client.BrowserClient;
 public class BirdeVIew extends BridgeWebView{
     public BirdeVIew(Context context, AttributeSet attrs) {
         this(context, attrs,0);
+
+    }
+
+    public BirdeVIew(Context context, AttributeSet attrs, int defStyle) {
+        super(context,attrs,defStyle);
         setVerticalScrollBarEnabled(false);
         setHorizontalScrollBarEnabled(false);
         setVerticalFadingEdgeEnabled(false);
@@ -38,11 +43,6 @@ public class BirdeVIew extends BridgeWebView{
         settings.setAppCachePath(getContext().getApplicationContext().getCacheDir().getAbsolutePath());
         settings.setAllowFileAccess(true);
         settings.setAppCacheEnabled(true);
-    }
-
-    public BirdeVIew(Context context, AttributeSet attrs, int defStyle) {
-
-        super(context,attrs,defStyle);
         setWebViewClient(new BrowserClient(this));
     }
 
