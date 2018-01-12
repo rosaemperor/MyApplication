@@ -1,5 +1,6 @@
 package com.myapplication.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -18,6 +19,7 @@ import com.google.gson.JsonParser;
 import com.myapplication.R;
 import com.myapplication.adapter.ForecastsAdapter;
 import com.myapplication.adapter.TaoAdapter;
+import com.myapplication.adapter.TaoChildAdapter;
 import com.myapplication.databinding.ActivityLamadaLayoutBinding;
 import com.myapplication.viewModel.LamadaViewModel;
 import com.myapplication.viewModel.TaoChildViewModel;
@@ -39,14 +41,20 @@ public class LamadaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this, R.layout.activity_lamada_layout);
         binding.setViewModel(new LamadaViewModel());
-
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         List<TaoViewModel> list = new ArrayList<>();
         for(int i=0;i<15;i++){
             List<TaoChildViewModel> childViewModels = new ArrayList<>();
             for(int j=0;j<15;j++){
                 childViewModels.add(new TaoChildViewModel());
             }
-            list.add(new TaoViewModel(this,childViewModels));
+            TaoViewModel viewModel =ViewModelProviders.of(this).get(TaoViewModel.class);
+            viewModel.setManager(manager);
+            TaoChildAdapter childAdapter = new TaoChildAdapter(this,childViewModels);
+            viewModel.setRadapter(childAdapter);
+            list.add(viewModel);
+//            list.add(new TaoViewModel(this,childViewModels));
         }
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
         binding.recycleView.setAdapter(new TaoAdapter(LamadaActivity.this,list));
