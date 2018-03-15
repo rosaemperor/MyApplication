@@ -31,7 +31,7 @@ public class LamadaViewModel {
             @Override
             public void run() {
                 String serverIp="127.0.0.1";
-                int port =9090;
+                int port =12345;
                 MyClient client= new MyClient(serverIp,port);
                 try {
                     client.start();

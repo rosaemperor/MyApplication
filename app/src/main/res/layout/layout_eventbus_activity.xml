@@ -60,6 +60,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:layout_width="150dp"
         fresco:placeholderImage="@mipmap/ic_launcher"
+        android:onClick="@{event}"
         android:id="@+id/simpDraweeView"
         android:layout_height="160dp"/>
 

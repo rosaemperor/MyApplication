@@ -38,13 +38,13 @@ public class RetrofitUtils {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Response response = chain.proceed(chain.request());
-                Log.d("AAA", "" + response.body().string());
+                Log.d("TAG", "" + response.body().string());
                 ResponseBody responseBody = response.body();
 
                 Request request = chain.request().newBuilder()
                         .addHeader("Content-Type", "text/html; charset=UTF-8")
                         .build();
-                Log.d("AAA", "" + request.url().toString());
+                Log.d("TAG", "" + request.url().toString());
                 return chain.proceed(request);
             }
         })

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.myapplication"
-        minSdkVersion 15
-        targetSdkVersion 21
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,6 +30,17 @@ android {
             dataBinding{
                 enabled=true
             }
+        }
+    }
+    flavorDimensions("default")
+    productFlavors {
+        wandoujia {
+            dimension "default"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+        yingyongbao {
+            dimension "default"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
         }
     }
 }
@@ -65,7 +76,8 @@ dependencies {
 
 
     //Google的ViewModel和lifeCircle
-
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
 
     //facebook
 //    compile  'com.facebook.android:account-kit-sdk:4.+'
@@ -93,6 +105,7 @@ dependencies {
     compile 'com.facebook.fresco:imagepipeline-okhttp3:0.12.0+'
     compile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
 }
 repositories {
     mavenCentral()

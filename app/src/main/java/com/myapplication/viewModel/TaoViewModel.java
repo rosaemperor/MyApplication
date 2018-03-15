@@ -1,5 +1,6 @@
 package com.myapplication.viewModel;
 
+import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.databinding.ObservableField;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,10 +16,16 @@ import java.util.List;
  * Created by administrator on 2017/12/29.
  */
 
-public class TaoViewModel {
-    ObservableField<String> content=new ObservableField<>();
-    ObservableField<TaoChildAdapter> adapter= new ObservableField<>();
-    ObservableField<RecyclerView.LayoutManager> manager = new ObservableField<>();
+public class TaoViewModel extends ViewModel {
+    ObservableField<String> content;
+    ObservableField<TaoChildAdapter> adapter;
+    ObservableField<RecyclerView.LayoutManager> manager;
+
+    public TaoViewModel() {
+        content = new ObservableField<>();
+        adapter = new ObservableField<>();
+        manager = new ObservableField<>();
+    }
 
     public ObservableField<RecyclerView.LayoutManager> getManager() {
         return manager;
@@ -43,12 +50,21 @@ public class TaoViewModel {
     public void setContent(ObservableField<String> content) {
         this.content = content;
     }
-    public TaoViewModel(Context context,List<TaoChildViewModel> childViewModels){
+
+    public TaoViewModel(Context context, List<TaoChildViewModel> childViewModels) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayout.HORIZONTAL);
         manager.set(layoutManager);
-        TaoChildAdapter childAdapter = new TaoChildAdapter(context,childViewModels);
-        adapter.set(childAdapter);
+
 
     }
+
+    public void setManager(RecyclerView.LayoutManager layoutManager) {
+        manager.set(layoutManager);
+    }
+
+    public void setRadapter(TaoChildAdapter childAdapter) {
+        adapter.set(childAdapter);
+    }
+
 }

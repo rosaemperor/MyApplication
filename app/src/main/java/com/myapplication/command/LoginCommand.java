@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
@@ -79,14 +81,22 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
 //             viewModel.updateUserMeddage();
 //                Log.d("AAA",""+Build.VERSION.SDK_INT);
 //                if(Build.VERSION.SDK_INT)
-                GetContactsUtils utils= new GetContactsUtils();
-                  utils.init(view.getContext());
-                  utils.getSIMContacts();
-                  Log.d("login",""+utils.getSIMContacts().get(2).getMobile());
+//                GetContactsUtils utils= new GetContactsUtils();
+//                  utils.init(view.getContext());
+//                  utils.getSIMContacts();
+//                  Log.d("login",""+utils.getSIMContacts().get(2).getMobile());
 //                GetContactsUtil contactsUtil = new GetContactsUtil(view.getContext()) ;
 //                List<Contact> contactList = contactsUtil.getContacts();
 //                Log.d("TAG",""+contactList.size());
 //                Log.d("TAG",""+contactList.get(22).getName()+contactList.get(22).getMobile());
+                ApplicationInfo info= null;
+                try {
+                    info = view.getContext().getPackageManager().getApplicationInfo(view.getContext().getPackageName(), PackageManager.GET_META_DATA);
+                    Log.d("channel",""+info.metaData.getString("UMENG_CHANNEL_VALUE"));
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 break;
         }
     }
