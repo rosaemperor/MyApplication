@@ -50,7 +50,10 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".activity.KotlinActivity"
                   android:theme="@style/AppSplash"/>
+        <activity android:name=".activity.CreameActivity"
+                  android:screenOrientation="landscape">
 
+        </activity>
         <activity android:name=".activity.LamadaActivity"/>
 
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"

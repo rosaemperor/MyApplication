@@ -99,7 +99,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
         manager.set(MylayoutManager())
 //        manager.set(LinearLayoutManager(activity))
         iamgeAdapter.set(ImageListAdapter(activity))
-        viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
+//        viewStyle.backgroundClolr.set(activity!!.getColor(R.color.colorPrimary))
         if (BuildConfig.DEBUG) {
             loginBean!!.token = "debug"
         } else {

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.facebook.common.logging.LoggingDelegate;
 import com.myapplication.BuildConfig;
 import com.myapplication.R;
+import com.myapplication.activity.CreameActivity;
 import com.myapplication.activity.KotlinActivity;
 import com.myapplication.activity.LamadaActivity;
 import com.myapplication.base.BaseCommand;
@@ -89,13 +90,16 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
 //                List<Contact> contactList = contactsUtil.getContacts();
 //                Log.d("TAG",""+contactList.size());
 //                Log.d("TAG",""+contactList.get(22).getName()+contactList.get(22).getMobile());
-                ApplicationInfo info= null;
-                try {
-                    info = view.getContext().getPackageManager().getApplicationInfo(view.getContext().getPackageName(), PackageManager.GET_META_DATA);
-                    Log.d("channel",""+info.metaData.getString("UMENG_CHANNEL_VALUE"));
-                } catch (PackageManager.NameNotFoundException e) {
-                    e.printStackTrace();
-                }
+//                ApplicationInfo info= null;
+//                try {
+//                    info = view.getContext().getPackageManager().getApplicationInfo(view.getContext().getPackageName(), PackageManager.GET_META_DATA);
+//                    Log.d("channel",""+info.metaData.getString("UMENG_CHANNEL_VALUE"));
+//                } catch (PackageManager.NameNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+                Intent intent=new Intent();
+                intent.setClass(view.getContext(), CreameActivity.class);
+                view.getContext().startActivity(intent);
 
                 break;
         }
