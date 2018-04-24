@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -73,5 +74,15 @@ public class LamadaActivity extends AppCompatActivity{
         Gson myadapter=gsonBuilder.registerTypeAdapter(Object.class,new ForecastsAdapter()).create();
         myadapter.fromJson(gson.toJson(model),TaoChildViewModel.class);
         return true;
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+        if(isInPictureInPictureMode){
+            Toast.makeText(this, "请隐藏所有不要小窗口显示的UI", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "全凭窗口恢复UI显示", Toast.LENGTH_SHORT).show();
+        }
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
     }
 }

@@ -6,6 +6,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.databinding.ObservableField;
+import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +43,11 @@ public class LamadaViewModel {
             }
         }).start();
 
+    }
+    public void onClick(View view){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            ((AppCompatActivity)view.getContext()).enterPictureInPictureMode();
+        }
     }
     public boolean longClick(){
         Log.d("TAG","长安");

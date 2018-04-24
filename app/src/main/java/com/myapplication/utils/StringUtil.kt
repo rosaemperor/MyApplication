@@ -21,5 +21,9 @@ object StringUtil {
     fun delete(countString : String ,deleteString: String) :String{
      return countString.replace(deleteString,"")
     }
+    fun destoryString(commingString:String) :String {
+
+        return ""
+    }
 
 }

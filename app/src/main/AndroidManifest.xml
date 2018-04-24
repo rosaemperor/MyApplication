@@ -28,8 +28,11 @@
         <meta-data android:name="design_height" android:value="1280"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.LamadaActivity"
             android:label="@string/app_name"
+            android:supportsPictureInPicture="true"
+            android:configChanges=
+                "screenSize|smallestScreenSize|screenLayout|orientation"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -54,7 +57,7 @@
                   android:screenOrientation="landscape">
 
         </activity>
-        <activity android:name=".activity.LamadaActivity"/>
+        <!--<activity android:name=".activity.LamadaActivity"/>-->
 
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
             android:value="GlideModule"/>

@@ -3,6 +3,7 @@ package com.myapplication.activity
 import android.app.Activity
 import android.content.Context
 import android.databinding.DataBindingUtil
+
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
