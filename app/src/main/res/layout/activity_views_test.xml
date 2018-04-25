@@ -35,5 +35,15 @@
         android:onClick="@{event}"
         android:gravity="center"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:background="@color/c_AFAFAF"
+        android:text="要提交的那次"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:onClick="@{event}"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout></layout>
