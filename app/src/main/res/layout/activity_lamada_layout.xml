@@ -33,6 +33,15 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:text="git操作测试"
+        android:onClick="@{viewModel.onClick}"
+        android:padding="15dp"
+        android:background="#ff0000"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleView"
         android:visibility="gone"
