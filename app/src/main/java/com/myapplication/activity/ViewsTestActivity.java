@@ -40,5 +40,13 @@ public class ViewsTestActivity  extends AutoLayoutActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_views_test);
         binding.setEvent(this);
+        binding.RemoteControlView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent();
+                intent.setClass(ViewsTestActivity.this, ImageListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

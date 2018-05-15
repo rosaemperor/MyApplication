@@ -3,6 +3,7 @@ package com.myapplication
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 
@@ -18,6 +19,7 @@ import org.greenrobot.eventbus.EventBus
 
 class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding: LayoutEventbusSendBinding
+    lateinit var list:ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@EventBusSendActivity, R.layout.layout_eventbus_send)
@@ -42,6 +44,10 @@ class EventBusSendActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.event_send -> {
+                list.forEach {i->
+                    Log.d("TAG",i)
+                }
+                Toast.makeText(this@EventBusSendActivity,"",Toast.LENGTH_SHORT).show()
                 EventBus.getDefault().post(MessageEvent(binding.eventEditText.text.toString()))
                 finish()
             }

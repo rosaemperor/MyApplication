@@ -39,6 +39,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
     internal var loginBean: LoginBean? = null
     //model
     //    private LoginBean bean;
+    var str="I am the test string"
 
     /**
      * viewstyle

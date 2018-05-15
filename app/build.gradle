@@ -10,7 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
 //        ndk{
 //            moduleName ""
 //            ldLibs
@@ -40,6 +39,7 @@ android {
         }
         yingyongbao {
             dimension "default"
+            buildConfigField('String' , 'testUrl','www.baidu.com')
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
         }
     }

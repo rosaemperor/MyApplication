@@ -28,7 +28,7 @@
         <meta-data android:name="design_height" android:value="1280"/>
 
         <activity
-            android:name=".activity.LamadaActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name"
             android:supportsPictureInPicture="true"
             android:configChanges=
@@ -50,7 +50,7 @@
         <activity android:name=".SimpleRxAndroidActivity"/>
         <activity android:name=".activity.ViewsTestActivity"/>
         <activity android:name=".activity.ImageListActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <!--<activity android:name=".LoginActivity"/>-->
         <activity android:name=".activity.KotlinActivity"
                   android:theme="@style/AppSplash"/>
         <activity android:name=".activity.CreameActivity"

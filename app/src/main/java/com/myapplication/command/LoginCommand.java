@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.facebook.common.logging.LoggingDelegate;
 import com.myapplication.BuildConfig;
 import com.myapplication.R;
+import com.myapplication.SimpleRxAndroidActivity;
 import com.myapplication.activity.CreameActivity;
 import com.myapplication.activity.KotlinActivity;
 import com.myapplication.activity.LamadaActivity;
@@ -98,12 +99,19 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
 //                    e.printStackTrace();
 //                }
                 Intent intent=new Intent();
-                intent.setClass(view.getContext(), CreameActivity.class);
+                intent.setClass(view.getContext(), SimpleRxAndroidActivity.class);
                 view.getContext().startActivity(intent);
 
                 break;
         }
     }
+    public void login(View view,String string){
+        Intent intent=new Intent();
+        intent.setClass(view.getContext(), SimpleRxAndroidActivity.class);
+        view.getContext().startActivity(intent);
+        Toast.makeText(view.getContext(), string,Toast.LENGTH_LONG).show();
+    }
+
 
     /**
      * ListView的item点击事件

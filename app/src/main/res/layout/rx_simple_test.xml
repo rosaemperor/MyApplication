@@ -5,6 +5,9 @@
         <variable
             name="event"
             type="android.view.View.OnClickListener"/>
+        <variable
+            name="viewmodel"
+            type="com.myapplication.viewModel.ChildViewModel"/>
     </data>
 
 <LinearLayout
@@ -16,6 +19,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/simple_text"
         android:onClick="@{event}"
+        android:text="@={viewmodel.text}"
+        android:textColor="@color/black"
         android:padding="15dp"/>
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"

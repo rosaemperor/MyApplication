@@ -31,6 +31,9 @@ public class SimpleRxAndroidActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.rx_simple_test);
         ChildViewModel childViewModel = ViewModelProviders.of(this).get(ChildViewModel.class);
+
+        binding.setViewmodel(childViewModel);
+        childViewModel.getText().set("test String");
 //        viewModel= ViewModelProviders.of(this).get(RxAndroidSimpleViewModel.class);
 //        viewModel= new RxAndroidSimpleViewModel(this,binding);
         List<Fragment> list = new ArrayList<>();
