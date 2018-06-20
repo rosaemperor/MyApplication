@@ -107,10 +107,16 @@ public class LoginCommand extends BaseCommand implements View.OnClickListener{
     }
     public void login(View view,String string){
         Intent intent=new Intent();
-        intent.setClass(view.getContext(), SimpleRxAndroidActivity.class);
+        intent.setClass(view.getContext(), KotlinActivity.class);
         view.getContext().startActivity(intent);
         Toast.makeText(view.getContext(), string,Toast.LENGTH_LONG).show();
     }
+    public void kotlin(View view){
+        Intent intent=new Intent();
+        intent.setClass(view.getContext(), KotlinActivity.class);
+        view.getContext().startActivity(intent);
+    }
+
 
 
     /**

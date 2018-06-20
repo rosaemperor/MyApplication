@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 
 import com.myapplication.BuildConfig
 import com.myapplication.LoginActivity
@@ -49,6 +52,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
     //数据
     val ImageUrl = ObservableField<String>()
     val title = ObservableField<String>()
+    val kotlin = ObservableField<String>()
 
     val bean = ObservableField<LoginBean>()
     val adapter = ObservableField<ListAdapter>()
@@ -79,21 +83,22 @@ class LoginViewModel(var activity: Context?, id: Long) {
 
     private fun checkVersion() {
     var  call = RetrofitUtils.getInstance().help.getLoginString("15936562980","333333")
-//        call.enqueue(object :Callback<LoginBean>{
-//            override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
-//               if(null !=loginBean?.token){
-//                   Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
-//               }
-//            }
-//
-//            override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
-//               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
-//            }
-//
-//        })
+        call.enqueue(object :Callback<LoginBean>{
+            override fun onResponse(call: Call<LoginBean>?, response: Response<LoginBean>?) {
+               if(null !=loginBean?.token){
+                   Toast.makeText(activity,"要更新应用了", Toast.LENGTH_LONG).show()
+               }
+            }
+
+            override fun onFailure(call: Call<LoginBean>?, t: Throwable?) {
+               Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT)
+            }
+
+        })
     }
 
     private fun loadData(id: Long) {
+        kotlin.set("kotlin")
         loginBean = LoginBean()
         loginBean!!.token = NdkUtils.helloWorld()
         viewStyle.showListView.set(View.GONE)
@@ -113,6 +118,9 @@ class LoginViewModel(var activity: Context?, id: Long) {
         title.set("title")
         adapter.set(ListAdapter(activity, list))
         bean.set(loginBean)
+//        var gson = Gson()
+//        var gsonBuilder = GsonBuilder()
+//        gsonBuilder.registerTypeAdapter(TypeToken<ObservableField<String>>.type,ObservableFieldSerializerDeserializer<String>())
 
     }
 
@@ -140,5 +148,7 @@ class LoginViewModel(var activity: Context?, id: Long) {
         adapter.get().destory()
         activity = null
     }
+
+
 
 }

@@ -57,13 +57,14 @@
                   android:screenOrientation="landscape">
 
         </activity>
+        <activity android:name=".wxapi.WXEntryActivity"/>
         <!--<activity android:name=".activity.LamadaActivity"/>-->
 
         <meta-data android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
             android:value="GlideModule"/>
         <meta-data
             android:name="UMENG_CHANNEL_VALUE"
-            android:value="${UMENG_CHANNEL_VALUE}" />
+            android:value="default" />
     </application>
 
 

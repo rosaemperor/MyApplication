@@ -45,6 +45,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:id="@+id/kotlin"
+        android:onClick="@{viewModel.command.kotlin}"
+        android:layout_marginTop="20dp"
+        android:background="@color/c_AFAFAF"
+        android:gravity="center"
+        android:text="@{viewModel.kotlin}"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
         android:layout_marginTop="20dp"
         android:background="@color/c_AFAFAF"
         android:gravity="center"
@@ -53,12 +63,12 @@
     <EditText
         android:layout_width="match_parent"
         android:padding="15dp"
-        android:visibility="gone"
-        android:text='@={viewModel.bean.get().token}'
+        android:text='@={viewModel.kotlin}'
         android:layout_height="wrap_content"/>
     <ListView
         android:layout_width="match_parent"
     android:id="@+id/list_view"
+
     android:visibility="@{viewModel.viewStyle.showListView}"
     app:adapter="@{viewModel.adapter}"
     app:onItemClickListener="@{viewModel.command.listItemClick}"

@@ -12,6 +12,8 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.myapplication.R;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ import okhttp3.OkHttpClient;
 
 public class MyApplication extends Application {
     private RefWatcher refWatcher;
+    private IWXAPI api;
+    private static MyApplication instance;
     List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
     @Override
     public void onCreate() {
@@ -36,6 +40,8 @@ public class MyApplication extends Application {
         initFresco();
 //        installLeakCanary();
         checkPermissionApplication();
+        registToWX();
+        instance = this;
     }
     private void installLeakCanary() {
         refWatcher = LeakCanary.install(this);
@@ -48,17 +54,19 @@ public class MyApplication extends Application {
         Fresco.initialize(this,config);
 
     }
-
+    public static MyApplication getInstance() {
+        return instance ;
+    }
     private void checkPermissionApplication() {
-        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
-        permissionItems.add(new PermissionItem(Manifest.permission.READ_PHONE_STATE));
-        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA));
-        permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE));
-        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION));
-        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_COARSE_LOCATION));
-        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
-        permissionItems.add(new PermissionItem(Manifest.permission.READ_CALL_LOG));
-        permissionItems.add(new PermissionItem(Manifest.permission.READ_SMS));
+//        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
+//        permissionItems.add(new PermissionItem(Manifest.permission.READ_PHONE_STATE));
+//        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA));
+//        permissionItems.add(new PermissionItem(Manifest.permission.CALL_PHONE));
+//        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION));
+//        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_COARSE_LOCATION));
+//        permissionItems.add(new PermissionItem(Manifest.permission.READ_CONTACTS));
+//        permissionItems.add(new PermissionItem(Manifest.permission.READ_CALL_LOG));
+//        permissionItems.add(new PermissionItem(Manifest.permission.READ_SMS));
         HiPermission.create(this).title("权限")
                 .permissions(permissionItems)
                 .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//permission icon color
@@ -100,4 +108,16 @@ public class MyApplication extends Application {
 //        return "com.rong360.app.crawler";
        return super.getPackageName();
    }
+
+
+    /**
+     * 微信sdk初始化
+     */
+    private void registToWX() {
+        api= WXAPIFactory.createWXAPI(this, "wxe8330db2e47ab273",true);
+        api.registerApp("wxe8330db2e47ab273");
+    }
+    public IWXAPI getWXApi(){
+        return api;
+    }
 }

@@ -1,6 +1,8 @@
 package com.myapplication;
 
 import android.Manifest;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MediatorLiveData;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         binding=null;
         viewModel.onDestory();
-
+        LiveData<String> liveData = new MediatorLiveData<>();
         super.onDestroy();
 
     }
